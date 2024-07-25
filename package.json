@@ -9,7 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "format": "prettier --write ./",
-    "deploy": "pnpm format && pnpm build && git add ."
+    "deploy": "bun run format && bun run build -- --preset=firebase && firebase deploy hosting && git add ."
   },
   "dependencies": {
     "@google/generative-ai": "^0.16.0",

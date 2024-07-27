@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import "@unocss/reset/tailwind.css";
 useHead({
-  title: `Brainiac | ${useRoute().meta.title}`,
+  titleTemplate: `Brainiac | ${useRoute().meta.title}`,
 });
 </script>
 
 <template>
-  <main min-h-screen max-w-90rem flex="flex col" m="0 a" items-center>
+  <UContainer
+    as="main"
+    class="min-w-xs font-sans bg-#131314 min-h-screen w-full flex flex-col items-center"
+  >
     <NuxtLayout>
-      <NuxtPage />
+      <LazyNuxtPage />
     </NuxtLayout>
-  </main>
+  </UContainer>
 </template>

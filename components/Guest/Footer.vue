@@ -1,11 +1,13 @@
 <template>
-  <footer class="flex w-full items-center p-block-0.75rem justify-between">
-    <a
-      href="https://www.github.com/favorodera"
+  <footer
+    class="flex w-full items-center p-block-0.75rem justify-between h-2.75rem"
+  >
+    <NuxtLink
+      to="https://www.github.com/favorodera"
       target="_blank"
       rel="noopener noreferrer"
       class="text-size-sm text-#FFFFFF7A font-400 transition-all hover:text-white"
-      >favorodera &copy; {{ new Date().getFullYear() }}</a
+      >favorodera &copy; {{ new Date().getFullYear() }}</NuxtLink
     >
 
     <div class="flex gap-1 items-center justify-center">

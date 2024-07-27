@@ -14,9 +14,11 @@
   "dependencies": {
     "@google/generative-ai": "^0.16.0",
     "@nuxt/ui": "^2.18.0",
+    "@pinia/nuxt": "^0.5.2",
     "@unocss/reset": "^0.61.5",
     "firebase": "^10.12.4",
     "nuxt": "^3.12.4",
+    "pinia": "^2.2.0",
     "unocss": "^0.61.5",
     "vue": "latest"
   },

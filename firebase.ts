@@ -1,12 +1,27 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  getFirestore,
+  setDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+} from "firebase/firestore";
 const runtimeConfig = useRuntimeConfig();
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: runtimeConfig.firebaseApiKey,
   authDomain: "brainiacaichat.firebaseapp.com",
@@ -17,6 +32,25 @@ const firebaseConfig = {
   measurementId: runtimeConfig.firebaseMeasurementId,
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const provider = new GoogleAuthProvider();
+const auth = getAuth(app);
+const dataBase = getFirestore(app);
+
+export {
+  addDoc,
+  auth,
+  collection,
+  dataBase,
+  doc,
+  getDoc,
+  provider,
+  setDoc,
+  signInWithPopup,
+  signOut,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+};

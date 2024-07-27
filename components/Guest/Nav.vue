@@ -1,14 +1,10 @@
 <template>
-  <nav flex w-full items-center p-block-0.75rem justify-between h-2.75rem>
+  <nav
+    class="flex max-w-90rem w-full items-center p-block-0.75rem justify-between h-2.75rem"
+  >
     <NuxtLink
       to="/"
-      flex
-      w-screen
-      text-size-xl
-      text-#FFFFFFDB
-      font-400
-      items-center
-      gap-0.38rem
+      class="flex w-screen text-size-xl text-#FFFFFFDB font-400 items-center gap-0.38rem"
     >
       <UIcon name="i-fa-xing" class="text-#217BFE w-5 h-5" />
       <h1>Brainiac</h1>

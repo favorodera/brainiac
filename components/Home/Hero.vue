@@ -1,3 +1,5 @@
+<script setup lang="ts"></script>
+
 <template>
   <section class="w-full">
     <h1
@@ -10,8 +12,8 @@
       <span class="text-size-1rem font-700 text-#FFFFFFA3"
         >Your AI Companion for Creativity and Productivity.</span
       >
-      <button
-        type="button"
+      <NuxtLink
+        to="/authentication/signin"
         class="border-1 pos-relative p-2 rounded-xl group mt-5 transition-all transition-delay-50 transition-ease transition-duration-1000"
       >
         <span
@@ -22,7 +24,7 @@
           name="i-solar-chat-line-outline"
           class="w-5 h-5 op-0 pos-absolute top-50% right-2.5 transform-translate-y--50% text-#217bfe text-xl group-hover:op-100 transition-opacity transition-delay-30 transition-ease-in-out transition-duration-500"
         />
-      </button>
+      </NuxtLink>
     </h1>
   </section>
 </template>

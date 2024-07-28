@@ -25,10 +25,14 @@ export default defineNuxtConfig({
     },
   },
   nitro: {
+    preset: "firebase",
     firebase: {
       nodeVersion: "20",
       gen: 2,
+      httpsOptions: {
+        region: "europe-west1",
+        maxInstances: 3,
+      },
     },
-    preset: "firebase",
   },
 });

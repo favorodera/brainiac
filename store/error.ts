@@ -17,15 +17,10 @@ const useErrorStore = defineStore("error", () => {
     errorcode: 0,
   });
 
-  const signInFormError = ref<FormError[]>([{ path: "", message: "" }]);
-  const signUpFormError = ref<FormError[]>([{ path: "", message: "" }]);
-
   return {
     emailPasswordSignInError,
     emailPasswordSignUpError,
     googleAuthError,
-    signInFormError,
-    signUpFormError,
   };
 });
 

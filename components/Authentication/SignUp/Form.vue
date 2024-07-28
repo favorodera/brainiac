@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import useSchemaStore from "~/store/schema";
 
-const { signInSchema } = useSchemaStore();
+const { signUpSchema } = useSchemaStore();
 
 const state = reactive({
   email: undefined,
   password: undefined,
+  confirmPassword: undefined,
 });
 </script>
 
@@ -27,18 +28,18 @@ const state = reactive({
     </UButton>
 
     <UForm
-      :schema="signInSchema"
+      :schema="signUpSchema"
       :state="state"
       class="px-2 py-5 sm:p-6 w-full max-w-lg grid gap-8 b-1 b-#353C4A rounded-2"
-      @submit="useEmailPasswordAuth"
+      @submit="useCreateEmailPassword"
     >
       <header class="grid gap-1 place-items-center">
-        <UIcon name="i-heroicons-lock-closed" class="text-white w-8 h-8" />
-        <h2 class="text-2xl font-700 text-white text-center">Welcome Back!</h2>
+        <UIcon name="i-heroicons-user-circle" class="text-white w-8 h-8" />
+        <h2 class="text-2xl font-700 text-white text-center">Create Account</h2>
         <h3 class="text-gray">
-          Don't have an account?
-          <NuxtLink to="/authentication/signup" class="text-#4859f3 font-600"
-            >Sign up </NuxtLink
+          Already have an account?
+          <NuxtLink to="/authentication/signin" class="text-#4859f3 font-600"
+            >Sign in </NuxtLink
           >.
         </h3>
       </header>
@@ -84,16 +85,34 @@ const state = reactive({
             />
           </template>
         </UInput>
-        <template #hint>
-          <NuxtLink to="" class="text-#4859f3 font-600"
-            >Forgot password?</NuxtLink
-          >
-        </template>
+      </UFormGroup>
+
+      <UFormGroup
+        label="Confirm Password"
+        name="confirmPassword"
+        size="xl"
+        eager-validation
+        required
+      >
+        <UInput
+          v-model="state.confirmPassword"
+          variant="none"
+          type="password"
+          placeholder="Confirm Password"
+          class="b-1 b-#353C4A rounded-2 grid font-700"
+        >
+          <template #leading>
+            <UIcon
+              name="i-heroicons-lock-closed"
+              class="w-6 h-6 text-#4859f3"
+            />
+          </template>
+        </UInput>
       </UFormGroup>
 
       <UButton
         type="submit"
-        label="Sign In"
+        label="Sign Up"
         color="white"
         variant="ghost"
         size="md"
@@ -106,7 +125,7 @@ const state = reactive({
 
       <UButton
         @click.prevent="() => useGoogleAuth()"
-        label="Sign in with Google"
+        label="Sign up with Google"
         icon="i-ion-logo-google"
         block
         type="button"

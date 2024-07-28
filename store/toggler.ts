@@ -1,9 +1,5 @@
 import { defineStore } from "pinia";
 
-const useTogglerStore = defineStore("toggler", () => {
-  const isFormAlertOpen = ref(false);
-
-  return { isFormAlertOpen };
-});
+const useTogglerStore = defineStore("toggler", () => {});
 
 export default useTogglerStore;

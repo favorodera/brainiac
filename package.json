@@ -9,7 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "format": "prettier --write ./",
-    "deploy": "bun run format && bun run build -- --preset=firebase && firebase deploy hosting && git add ."
+    "deploy": "bun run format && bun run build -- --preset=firebase && git add ."
   },
   "dependencies": {
     "@google/generative-ai": "^0.16.0",
@@ -20,7 +20,8 @@
     "nuxt": "^3.12.4",
     "pinia": "^2.2.0",
     "unocss": "^0.61.5",
-    "vue": "latest"
+    "vue": "latest",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.230",

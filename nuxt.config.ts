@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
+  ssr: true,
   modules: ["@unocss/nuxt", "@nuxt/ui", "@pinia/nuxt"],
   unocss: {
     nuxtLayers: true,
@@ -15,6 +16,8 @@ export default defineNuxtConfig({
     firebaseMeasurementId: "",
   },
   app: {
+    layoutTransition: { name: "layout", mode: "out-in" },
+    pageTransition: { name: "page", mode: "out-in" },
     head: {
       meta: [
         { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -22,6 +25,10 @@ export default defineNuxtConfig({
     },
   },
   nitro: {
+    firebase: {
+      nodeVersion: "20",
+      gen: 2,
+    },
     preset: "firebase",
   },
 });

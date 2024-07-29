@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { ref } from "vue";
+import { reactive, ref } from "vue";
+
 const runtimeConfig = useRuntimeConfig();
 
 const genAI = new GoogleGenerativeAI(runtimeConfig.geminiApiKey);
@@ -13,10 +14,9 @@ interface ChatMessage {
   role: "user" | "model";
   parts: ChatMessagePart[];
 }
-
 type ChatHistory = ChatMessage[];
 
-const chatHistory = ref<ChatHistory>([]);
+const chatHistory = reactive<ChatHistory>([]);
 
 export default defineEventHandler(async (event) => {
   const { prompt } = await readBody(event);

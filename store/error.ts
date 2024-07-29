@@ -1,19 +1,17 @@
 import { defineStore } from "pinia";
-import type { FormError } from "#ui/types";
 
 type StatusCode = {
   errorcode: number;
 };
 
 const useErrorStore = defineStore("error", () => {
-  const emailPasswordSignInError = ref<StatusCode>({
-    errorcode: 0,
-  });
-  const emailPasswordSignUpError = ref<StatusCode>({
+  const emailPasswordSignInError = reactive<StatusCode>({ errorcode: 0 });
+
+  const emailPasswordSignUpError = reactive<StatusCode>({
     errorcode: 0,
   });
 
-  const googleAuthError = ref<StatusCode>({
+  const googleAuthError = reactive<StatusCode>({
     errorcode: 0,
   });
 

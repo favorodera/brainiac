@@ -9,12 +9,10 @@
       <UIcon name="i-fa-xing" class="text-#217BFE w-5 h-5" />
       <h1>Brainiac</h1>
     </NuxtLink>
-    <slot name="menu" />
   </nav>
 </template>
 
 <style scoped lang="scss">
-@use "../assets/scss/index.scss" as index;
 h1 {
   background: linear-gradient(
     90deg,

@@ -5,15 +5,9 @@ useHead({
 </script>
 
 <template>
-  <!-- <UNotification id="alert"/> -->
-  <UContainer
-    as="main"
-    class="min-w-xs font-sans bg-#131314 min-h-screen w-full flex flex-col items-center"
-  >
-    <NuxtLayout>
-      <LazyNuxtPage />
-    </NuxtLayout>
-  </UContainer>
+  <NuxtLayout class="dark font-sans bg-#131314 text-white">
+    <LazyNuxtPage />
+  </NuxtLayout>
 </template>
 
 <style lang="scss">

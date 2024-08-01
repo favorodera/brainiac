@@ -32,14 +32,6 @@ export default defineConfig({
     presetTypography(),
     presetWebFonts({
       provider: "google",
-      fonts: {
-        poppins: [
-          {
-            name: "Poppins",
-            weights: [400, 500, 600, 700, 800, 900],
-          },
-        ],
-      },
     }),
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],

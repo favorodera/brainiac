@@ -16,7 +16,7 @@ definePageMeta({
 
 <template>
   <UContainer
-    as="main"
+    as="div"
     class="p-0 gap-8 w-full grid justify-center items-center"
   >
     <HomeHero />

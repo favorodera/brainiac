@@ -1,18 +1,18 @@
 import { defineStore } from "pinia";
 
-type ErrorStatus = {
-  errorstatus: number | string;
+type StatusCode = {
+  errorcode: number;
 };
 
 const useErrorStore = defineStore("error", () => {
-  const emailPasswordSignInError = reactive<ErrorStatus>({ errorstatus: 0 });
+  const emailPasswordSignInError = reactive<StatusCode>({ errorcode: 0 });
 
-  const emailPasswordSignUpError = reactive<ErrorStatus>({
-    errorstatus: 0,
+  const emailPasswordSignUpError = reactive<StatusCode>({
+    errorcode: 0,
   });
 
-  const googleAuthError = reactive<ErrorStatus>({
-    errorstatus: 0,
+  const googleAuthError = reactive<StatusCode>({
+    errorcode: 0,
   });
 
   return {

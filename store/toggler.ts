@@ -1,9 +1,5 @@
 import { defineStore } from "pinia";
 
-const useTogglerStore = defineStore("toggler", () => {
-  const isAuthenticated = useState<boolean>("isAuthenticated", () => false);
-
-  return { isAuthenticated };
-});
+const useTogglerStore = defineStore("toggler", () => {});
 
 export default useTogglerStore;

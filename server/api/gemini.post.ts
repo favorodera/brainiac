@@ -1,6 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { useState } from "nuxt/app";
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -29,7 +28,7 @@ export default defineEventHandler(async (event) => {
     const result = await chat.sendMessageStream(prompt);
     const response = result.stream;
 
-    let geminiResponse = useState<string>("");
+    let geminiResponse = ref<string>("");
 
     for await (const chunk of response) {
       geminiResponse.value += chunk.text();

@@ -9,10 +9,10 @@ const colors = ref(['#ac87eb', '#a24ae7', '#f66a4b', '#4859f3']);
 // The 'data' property of the response is destructured and assigned to 'randomizedPromptCards'
 const { data: randomizedPromptCards } = await useFetch('/api/promptcards', {
   method: 'GET',
-});
+})
 
 // Assign the fetched prompt cards to the 'items' variable
-const items = randomizedPromptCards.value;
+const items = randomizedPromptCards.value || [];
 
 // Define a function to transfer the selected prompt card text to the text area
 const promptCardToTextarea = (promptcard: string) => {
@@ -26,7 +26,7 @@ const promptCardToTextarea = (promptcard: string) => {
 
 <template>
   <UCarousel
-    v-slot="{ item, index }"
+    v-slot="{ item, index }:{ item: PromptCardItem; index: number }"
     :items="items"
     :ui="{
       wrapper: 'w-full max-w-70.875rem min-h-12.375rem',
@@ -36,7 +36,7 @@ const promptCardToTextarea = (promptcard: string) => {
     <div
       class="group hover:b-y-#a24ae7 hover:b-s-#f66a4b hover:b-e-#4859f3 flex flex-col gap-3 py-0.81rem px-3 min-h-12.375rem max-h-12.375rem max-w-16.875rem min-w-16.875rem b-1 b-transparent rounded-xl bg-#1e1f20 cursor-pointer transition-all transition-delay-50 transition-ease transition-duration-1000"
       :draggable="false"
-      @click="promptCardToTextarea(item.prompt as string)"
+      @click="promptCardToTextarea(item.prompt)"
     >
       <div
         class="group-hover:b-y-#a24ae7 group-hover:b-s-#f66a4b group-hover:b-e-#4859f3 p-0.38rem rounded-0.5625rem bg-#FFFFFF0F flex items-center justify-center w-min b-1 b-transparent transition-all transition-delay-50 transition-ease transition-duration-1000"

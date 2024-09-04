@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from '@google/generative-ai'
-import type { History } from '~/store/chatSchema'
+import { History } from '~/utils/types'
 
 // Get runtime configuration variables
 const runtime = useRuntimeConfig()

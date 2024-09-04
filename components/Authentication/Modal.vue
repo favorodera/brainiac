@@ -17,7 +17,7 @@
   </UModal>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .dots>div:nth-of-type(2),
 .dots>div:nth-of-type(4) {
   animation-delay: 0.25s;

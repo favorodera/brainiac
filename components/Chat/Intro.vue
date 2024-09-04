@@ -1,11 +1,17 @@
+<script lang="ts" setup>
+const { data } = await useFetch('/api/claims', {
+  method: 'GET',
+})
+</script>
+
 <template>
   <div
     class="flex flex-col items-center justify-center gap-4 w-full max-w-41.875rem"
   >
     <h1 class="text-10 font-700 text-center">
       <span
-        class="bg-gradient-to-r from-#217BFE via-#ac87eb to-#ee4d5d bg-clip-text text-transparent"
-      >Hello, Favour</span>
+        class="bg-gradient-to-r from-#217BFE via-#ac87eb to-#ee4d5d bg-clip-text text-transparent case-capital "
+      >Hello,{{ data?.claims?.name?.split(" ")[0] || data?.claims?.email?.split("@")[0] }}</span>
       <br>
       How can I help you today?
     </h1>

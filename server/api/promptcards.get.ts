@@ -1,11 +1,4 @@
-// Define the type for a prompt card item
-type PromptCardItem = {
-  icon: string // The icon to be displayed with the prompt card
-  prompt: string // The actual prompt text
-}
-
-// Define the type for an array of prompt card items
-type PromptCards = PromptCardItem[]
+import { PromptCards } from "~/utils/types"; // Import the type for an array of prompt card items
 
 // Define an array of prompt card objects, each with an icon and a prompt
 const promptCards: PromptCards = [

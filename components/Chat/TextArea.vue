@@ -1,10 +1,11 @@
 <script setup lang="ts">
-// Import the useBrainiacStore from the Pinia store to manage the prompt
 import useBrainiacStore from '~/store/brainiacStore'
 </script>
 
 <template>
-  <div class="w-full max-w-45rem flex p-r items-center rounded-1 justify-center gap-1 dark:bg-#1e1f20">
+  <div
+    class="w-full max-w-45rem flex p-r items-center rounded-1 justify-center gap-1 dark:bg-#1e1f20"
+  >
     <UTextarea
       id="textarea"
       v-model="useBrainiacStore().prompt"

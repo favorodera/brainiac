@@ -13,51 +13,34 @@ import type { FormSubmitEvent } from '#ui/types'
 import AuthenticationModal from '~/components/Authentication/Modal.vue'
 import useAuthSchemaStore from '~/store/authSchemaStore'
 
-// Define the type for the sign-in form data
 const _signInSchema = useAuthSchemaStore(createPinia()).signInSchema
 type Schema = z.infer<typeof _signInSchema>
 
-/**
- * Handles email/password authentication for the application.
- *
- * This function attempts to sign in a user using email and password.
- * It includes error handling for various Firebase authentication errors.
- *
- * @param {FormSubmitEvent<Schema>} event - The form submission event containing user credentials.
- */
 export default async function (event: FormSubmitEvent<Schema>) {
-  // Open the authentication modal
   useModal().open(AuthenticationModal)
 
   try {
-    // Set Firebase authentication persistence to in-memory
     await setPersistence(auth, inMemoryPersistence)
 
-    // Attempt to sign in with email and password
     const credentials = await signInWithEmailAndPassword(
       auth,
       event.data.email,
       event.data.password,
     )
 
-    // Check if the user's email is verified
-    if (credentials.user.emailVerified === false) {
-      // Send email verification if not verified
+    if (!credentials.user.emailVerified) {
       sendEmailVerification(credentials.user)
 
-      // Close the authentication modal if email is unverified
       useModal().close()
 
-      // Display a toast notification indicating email verification is required
       useToast().add({
         id: 'account-not-verified',
         title: 'Email Address Not Verified',
         description: 'Click here to verify your email address',
         icon: 'i-heroicons-solid-exclamation-circle',
-        timeout: 0, // Persistent notification
+        timeout: 0,
         color: 'red',
         click: async () => {
-          // Navigate to the email verification page on click
           await navigateTo('/authentication/verification')
         },
         ui: {
@@ -67,14 +50,11 @@ export default async function (event: FormSubmitEvent<Schema>) {
         },
       })
 
-      // Stop further execution
       return
     }
 
-    // Get the user's ID token
     const idToken = await getIdToken(credentials.user)
 
-    // Send the ID token to the backend for server-side authentication
     await $fetch('/api/emailpasswordauth', {
       method: 'POST',
       body: JSON.stringify({
@@ -82,10 +62,8 @@ export default async function (event: FormSubmitEvent<Schema>) {
       }),
     })
 
-    // Close the authentication modal
     useModal().close()
 
-    // Display a success toast notification if login is successful
     useToast().add({
       id: 'login-success',
       title: 'Login Successful',
@@ -93,7 +71,6 @@ export default async function (event: FormSubmitEvent<Schema>) {
       icon: 'i-streamline-user-identifier-card-solid',
       timeout: 3000,
       callback: async () => {
-        // Navigate to the chat page after successful login
         await navigateTo('/chat')
       },
       closeButton: {
@@ -108,11 +85,8 @@ export default async function (event: FormSubmitEvent<Schema>) {
     })
   }
   catch (error) {
-    // Handle Firebase authentication errors
     if (error instanceof FirebaseError) {
-      // Handle specific error codes
       if (error.code === 'auth/invalid-credential') {
-        // Invalid credentials error
         useToast().add({
           id: 'invalid-credential',
           title: 'Invalid Credentials',
@@ -131,7 +105,6 @@ export default async function (event: FormSubmitEvent<Schema>) {
         })
       }
       else if (error.code === 'auth/network-request-failed') {
-        // Network error
         useToast().add({
           id: 'network-request-failed',
           title: 'Network Error',
@@ -150,7 +123,6 @@ export default async function (event: FormSubmitEvent<Schema>) {
         })
       }
       else if (error.code === 'auth/too-many-requests') {
-        // Too many requests error
         useToast().add({
           id: 'too-many-requests',
           title: 'Too Many Requests',
@@ -169,7 +141,6 @@ export default async function (event: FormSubmitEvent<Schema>) {
         })
       }
       else {
-        // Generic login error
         useToast().add({
           id: 'login-error',
           title: 'Login Error',
@@ -190,7 +161,6 @@ export default async function (event: FormSubmitEvent<Schema>) {
     }
   }
   finally {
-    // Ensure the authentication modal is closed
     useModal().close()
   }
 }

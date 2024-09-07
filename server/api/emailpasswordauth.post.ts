@@ -1,14 +1,12 @@
-import { database, auth } from '~/firebase/serverside' 
+import { auth, database } from '~/firebase/serverside'
 
 export default defineEventHandler(async (event) => {
-  const {
-    idToken, name }: {idToken: string,name: string} = await readBody(event)
+  const { idToken }:{idToken: string} = await readBody(event)
 
   try {
     await auth.verifyIdToken(idToken)
 
-    const expiresIn = 60 * 60 * 24 * 5 * 1000 
-
+    const expiresIn = 60 * 60 * 24 * 5 * 1000
     const sessionCookie = await auth.createSessionCookie(idToken, {
       expiresIn,
     })
@@ -33,26 +31,14 @@ export default defineEventHandler(async (event) => {
         .doc(decodedClaims.email!)
         .create({
           personalinfo: {
-            name: name, 
-            email: decodedClaims.email, 
-            photo: decodedClaims.picture, 
-            uid: decodedClaims.sub, 
-            verified: decodedClaims.email_verified, 
+            name: null,
+            email: decodedClaims.email,
+            photo: null,
+            uid: decodedClaims.sub,
+            verified: decodedClaims.email_verified,
           },
-          chats: {}, 
+          chats: {},
         })
-    }
-    else {
-      if (
-        !userdata.data()?.personalinfo.name
-        || !userdata.data()?.personalinfo.photo
-      ) {
-        await userdata.ref.update({
-          'personalinfo.name': name || userdata.data()?.personalinfo.name,
-          'personalinfo.photo':
-            userdata.data()?.personalinfo.photo || decodedClaims.picture,
-        })
-      }
     }
 
     return { message: 'Authentication Successful' }

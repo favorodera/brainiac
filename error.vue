@@ -1,16 +1,11 @@
 <script setup lang="ts">
-import type { NuxtError } from '#app' // Import the NuxtError type from the Nuxt app
-
-// Define props for the component
 defineProps({
-  // Error object
   error: {
-    type: Object as PropType<NuxtError>, // Type of the error object
-    default: null, // Default value of the error object
+    type: Object,
+    default: null,
   },
 })
 
-// Set the page title
 useHead({
   title: 'Brainiac | Error',
 })
@@ -90,6 +85,7 @@ useHead({
         </div>
       </div>
     </div>
+
     <CustomFooter />
   </div>
 </template>

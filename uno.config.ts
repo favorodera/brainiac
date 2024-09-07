@@ -1,4 +1,3 @@
-// uno.config.ts
 import {
   defineConfig,
   presetAttributify,
@@ -11,14 +10,6 @@ import {
 } from 'unocss'
 
 export default defineConfig({
-  shortcuts: [
-    // ...
-  ],
-  theme: {
-    colors: {
-      // ...
-    },
-  },
   presets: [
     presetUno(),
     presetAttributify(),
@@ -26,8 +17,7 @@ export default defineConfig({
       extraProperties: {
         'display': 'inline-block',
         'vertical-align': 'middle',
-        // ...
-      },
+      }
     }),
     presetTypography(),
     presetWebFonts({

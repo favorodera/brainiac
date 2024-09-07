@@ -1,15 +1,12 @@
 <script setup lang="ts">
-// Import the useSchemaStore pinia store to access authentication schemas
 import useSchemaStore from '~/store/authSchemaStore'
 
-// Destructure the signUpSchema from the useSchemaStore
 const { signUpSchema } = useSchemaStore()
 
-// Create a reactive object 'state' to store the form data (email, password, confirmPassword)
 const state = reactive({
-  email: undefined, // Initially undefined, will hold the user's email
-  password: undefined, // Initially undefined, will hold the user's password
-  confirmPassword: undefined, // Initially undefined, will hold the confirmed password
+  email: undefined,
+  password: undefined,
+  confirmPassword: undefined,
 })
 </script>
 

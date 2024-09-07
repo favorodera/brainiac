@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { data } = await useFetch('/api/claims', {
+const { data: claims } = await useFetch('/api/claims', {
   method: 'GET',
 })
 </script>
@@ -10,8 +10,10 @@ const { data } = await useFetch('/api/claims', {
   >
     <h1 class="text-10 font-700 text-center">
       <span
-        class="bg-gradient-to-r from-#217BFE via-#ac87eb to-#ee4d5d bg-clip-text text-transparent case-capital "
-      >Hello,{{ data?.claims?.name?.split(" ")[0] || data?.claims?.email?.split("@")[0] }}</span>
+        class="bg-gradient-to-r from-#217BFE via-#ac87eb to-#ee4d5d bg-clip-text text-transparent case-capital"
+      >Hello,{{
+        claims?.name?.split(" ")[0] || claims?.email?.split("@")[0]
+      }}</span>
       <br>
       How can I help you today?
     </h1>

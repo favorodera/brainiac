@@ -1,10 +1,11 @@
 <script setup lang="ts">
-// Import the ChatSlideover component to be used in the menu button
 import ChatSlideover from '~/components/Chat/Slideover.vue'
 </script>
 
 <template>
-  <main class="w-full p-5 flex flex-col min-h-screen gap-10 justify-between items-center">
+  <main
+    class="w-full p-5 flex flex-col min-h-screen gap-10 justify-between items-center"
+  >
     <CustomNav>
       <template #menu-button>
         <UButton

@@ -25,7 +25,7 @@ useHead({
   <USlideovers />
 </template>
 
-<style>
+<style lang="scss">
 .page-enter-active,
 .page-leave-active,
 .layout-enter-active,

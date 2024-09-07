@@ -1,59 +1,42 @@
 <script setup lang="ts">
-import markdownIt from 'markdown-it'; // For rendering Markdown
-import hljs from 'highlight.js'; // For syntax highlighting of code blocks
-import DOMPurify from 'dompurify'; // For sanitizing HTML to prevent XSS attacks
-import type { History } from '~/store/chatSchema'; // Import the History type from the Gemini store
+import markdownIt from 'markdown-it'
+import hljs from 'highlight.js'
+import DOMPurify from 'dompurify'
 
-// Create a Markdown-it instance with desired options
 const markdown = markdownIt('commonmark', {
-  breaks: true, // Convert line breaks to <br> tags
-  linkify: true, // Auto-convert URLs to links
-  html: true, // Enable HTML rendering (use with caution and proper sanitization)
-  langPrefix: 'language-', // Prefix for code block language classes
-  highlight: (str, lang): string => {
-    // Custom code highlighting function
+  breaks: true,
+  linkify: true,
+  html: true,
+  langPrefix: 'language-',
+  highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
-      // Check if language is supported by highlight.js
-      try {
-        // Highlight the code using highlight.js
-        const highlightedCode = hljs.highlight(str, {
-          language: lang,
-          ignoreIllegals: true,
-        }).value;
-        // Sanitize highlighted code before rendering to prevent XSS
-        const sanitizedCode = DOMPurify.sanitize(highlightedCode, {
-          ALLOWED_TAGS: ['pre', 'code'],
-          ALLOWED_ATTR: ['class'],
-        });
-        return sanitizedCode;
-      } catch (error) {
-        return error as string; // Catch any errors during highlighting
-      }
+      const highlightedCode = hljs.highlight(str, {
+        language: lang,
+        ignoreIllegals: true,
+      }).value
+      const sanitizedCode = DOMPurify.sanitize(highlightedCode, {
+        ALLOWED_TAGS: ['pre', 'code'],
+        ALLOWED_ATTR: ['class'],
+      })
+      return sanitizedCode
     }
-
-    // If language is not supported, return code wrapped in <pre> and <code> tags
-    return (
-      '<pre><code class="hljs">'
-      + markdown.utils.escapeHtml(str) // Escape HTML entities in code
-      + '</code></pre>'
-    );
+    return ''
   },
-});
 
-const chatHistory = ref<History>(); // Store the chat history
+})
 
-const brainiac = await useBrainiac(); // Call the useBrainiac composable
+const chatHistory = ref < ChatHistory > ([])
 
-// Watch for changes in the Gemini composable and update the response variable
+const brainiac = await useBrainiac()
+
 watch(
-  () => brainiac.value, // Watch the Gemini compsable return value
+  () => brainiac.value,
   (chatFragment) => {
-    chatHistory.value = chatFragment; // Update the response variable with the new history
+    chatHistory.value = chatFragment
   },
-  { immediate: true }, // Execute the watcher immediately on component mount
-);
+  { immediate: true },
+)
 </script>
-
 
 <template>
   <div

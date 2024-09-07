@@ -1,13 +1,11 @@
 <script setup lang="ts">
-// Set the page title for the head section
 useHead({
   title: 'Chat',
 })
 
-// Define page metadata, specifying the layout and middleware to use
 definePageMeta({
-  layout: 'authenticated', // Use the 'authenticated' layout for this page
-  middleware: ['auth'], // Apply the 'auth' middleware to protect the route
+  layout: 'authenticated',
+  middleware: ['auth'],
 })
 </script>
 

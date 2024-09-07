@@ -1,8 +1,6 @@
-import { PromptCards } from "~/utils/types"; // Import the type for an array of prompt card items
+import { PromptCards } from "~/utils/types"; 
 
-// Define an array of prompt card objects, each with an icon and a prompt
 const promptCards: PromptCards = [
-  // Each object represents a prompt card with an icon and a prompt
   {
     icon: 'i-heroicons-pencil-solid',
     prompt:
@@ -164,25 +162,17 @@ const promptCards: PromptCards = [
   },
 ]
 
-// Define an asynchronous event handler function for GET requests to the '/api/promptcards' endpoint
 export default defineEventHandler(async () => {
-  // Create a temporary copy of the prompt cards array to avoid modifying the original array
   const tempPromptCards = [...promptCards]
 
-  // Shuffle the prompt cards array using the Fisher-Yates shuffle algorithm
-  // This loop goes through each prompt card in the array
   for (let currentIndex = tempPromptCards.length - 1; currentIndex > 0; currentIndex--) {
-    // Generate a random index between 0 and the current index
     const randomIndex = Math.floor(Math.random() * (currentIndex + 1));
 
-    // Swap the prompt cards at the current index and the random index
-    // This is like shuffling a deck of cards by swapping two cards at a time
     [tempPromptCards[currentIndex], tempPromptCards[randomIndex]] = [
       tempPromptCards[randomIndex],
       tempPromptCards[currentIndex],
     ]
   }
 
-  // Return the first 4 elements of the shuffled array
   return tempPromptCards.slice(0, 4) 
 })

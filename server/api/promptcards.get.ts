@@ -1,178 +1,182 @@
-import { PromptCards } from "~/utils/types"; 
+import { PromptCards } from "~/utils/types";
 
 const promptCards: PromptCards = [
   {
-    icon: 'i-heroicons-pencil-solid',
+    icon: "i-heroicons-pencil-solid",
     prompt:
-      'Write a customer service email to a customer who received a damaged product, offering a refund or replacement.',
+      "Write a customer service email to a customer who received a damaged product, offering a refund or replacement.",
   },
   {
-    icon: 'i-heroicons-film-solid',
+    icon: "i-heroicons-film-solid",
     prompt:
-      'Write a short film script about a robot who falls in love with a human, exploring themes of AI and human connection.',
+      "Write a short film script about a robot who falls in love with a human, exploring themes of AI and human connection.",
   },
   {
-    icon: 'i-heroicons-code-solid',
+    icon: "i-heroicons-code-solid",
     prompt:
-      'Write Python code to scrape data from a website with pagination, including data extraction and cleaning.',
+      "Write Python code to scrape data from a website with pagination, including data extraction and cleaning.",
   },
   {
-    icon: 'i-heroicons-document-text-solid',
+    icon: "i-heroicons-document-text-solid",
     prompt:
-      'Write a blog post about the benefits of AI in business, discussing use cases, challenges, and the future of AI.',
+      "Write a blog post about the benefits of AI in business, discussing use cases, challenges, and the future of AI.",
   },
   {
-    icon: 'i-heroicons-presentation-chart-bar-solid',
+    icon: "i-heroicons-presentation-chart-bar-solid",
     prompt:
-      'Create a presentation deck for a new business venture, including a value proposition, target market analysis, and financial projections.',
+      "Create a presentation deck for a new business venture, including a value proposition, target market analysis, and financial projections.",
   },
   {
-    icon: 'i-heroicons-user-group-solid',
+    icon: "i-heroicons-user-group-solid",
     prompt:
-      'Write a speech about the importance of diversity and inclusion in the workplace, addressing benefits and how to create an inclusive environment.',
+      "Write a speech about the importance of diversity and inclusion in the workplace, addressing benefits and how to create an inclusive environment.",
   },
   {
-    icon: 'i-heroicons-globe-alt-solid',
+    icon: "i-heroicons-globe-alt-solid",
     prompt:
-      'Generate a travel itinerary for a two-week trip to Europe, including destinations, transportation, accommodation, and activities.',
+      "Generate a travel itinerary for a two-week trip to Europe, including destinations, transportation, accommodation, and activities.",
   },
   {
-    icon: 'i-heroicons-solid-code',
-    prompt: 'Write a function in JavaScript to reverse a linked list.',
+    icon: "i-heroicons-solid-code",
+    prompt: "Write a function in JavaScript to reverse a linked list.",
   },
   {
-    icon: 'i-heroicons-solid-terminal',
+    icon: "i-heroicons-solid-terminal",
     prompt:
-      'Explain the difference between a SQL database and a NoSQL database, and provide examples of when you might choose one over the other.',
+      "Explain the difference between a SQL database and a NoSQL database, and provide examples of when you might choose one over the other.",
   },
   {
-    icon: 'i-heroicons-bug-ant-solid',
+    icon: "i-heroicons-bug-ant-solid",
     prompt:
-      'Describe the process of debugging a web application, including common tools and techniques.',
+      "Describe the process of debugging a web application, including common tools and techniques.",
   },
   {
-    icon: 'i-heroicons-computer-desktop-solid',
+    icon: "i-heroicons-computer-desktop-solid",
     prompt:
-      'Explain the concept of API design, including best practices for creating RESTful APIs.',
+      "Explain the concept of API design, including best practices for creating RESTful APIs.",
   },
   {
-    icon: 'i-heroicons-server-solid',
+    icon: "i-heroicons-server-solid",
     prompt:
-      'Discuss the different types of cloud computing services (IaaS, PaaS, SaaS) and their use cases.',
+      "Discuss the different types of cloud computing services (IaaS, PaaS, SaaS) and their use cases.",
   },
   {
-    icon: 'i-heroicons-lock-closed-solid',
+    icon: "i-heroicons-lock-closed-solid",
     prompt:
-      'Explain the importance of cybersecurity and common threats like phishing, malware, and social engineering.',
+      "Explain the importance of cybersecurity and common threats like phishing, malware, and social engineering.",
   },
   {
-    icon: 'i-heroicons-puzzle-piece-solid',
+    icon: "i-heroicons-puzzle-piece-solid",
     prompt:
-      'Describe the principles of object-oriented programming (OOP) and provide examples of OOP concepts in code.',
+      "Describe the principles of object-oriented programming (OOP) and provide examples of OOP concepts in code.",
   },
   {
-    icon: 'i-heroicons-chart-bar-square-solid',
+    icon: "i-heroicons-chart-bar-square-solid",
     prompt:
-      'Explain the role of data structures and algorithms in software development, and provide examples of common data structures',
+      "Explain the role of data structures and algorithms in software development, and provide examples of common data structures",
   },
   {
-    icon: 'i-mdi-git',
+    icon: "i-mdi-git",
     prompt:
-      'Describe the Git version control system, including common commands and workflows for collaborating on code.',
+      "Describe the Git version control system, including common commands and workflows for collaborating on code.",
   },
   {
-    icon: 'i-heroicons-rectangle-stack-solid',
+    icon: "i-heroicons-rectangle-stack-solid",
     prompt:
-      'Explain the concept of machine learning and provide examples of different machine learning algorithms.',
+      "Explain the concept of machine learning and provide examples of different machine learning algorithms.",
   },
   {
-    icon: 'i-heroicons-star-solid',
+    icon: "i-heroicons-star-solid",
     prompt:
-      'Write a short story about a young girl who discovers a magical portal in her backyard, exploring themes of adventure and imagination.',
+      "Write a short story about a young girl who discovers a magical portal in her backyard, exploring themes of adventure and imagination.",
   },
   {
-    icon: 'i-heroicons-microphone-solid',
+    icon: "i-heroicons-microphone-solid",
     prompt:
-      'Create a podcast script about the history of AI, discussing key milestones, influential figures, and the impact of AI on society.',
+      "Create a podcast script about the history of AI, discussing key milestones, influential figures, and the impact of AI on society.",
   },
   {
-    icon: 'i-heroicons-book-open-solid',
+    icon: "i-heroicons-book-open-solid",
     prompt:
-      'Write a book review of a recent novel, analyzing the plot, characters, themes, and writing style.',
+      "Write a book review of a recent novel, analyzing the plot, characters, themes, and writing style.",
   },
   {
-    icon: 'i-heroicons-musical-note-solid',
+    icon: "i-heroicons-musical-note-solid",
     prompt:
-      'Compose a song about the beauty and power of nature, exploring themes of environmental conservation and human connection.',
+      "Compose a song about the beauty and power of nature, exploring themes of environmental conservation and human connection.",
   },
   {
-    icon: 'i-heroicons-film-solid',
+    icon: "i-heroicons-film-solid",
     prompt:
-      'Write a screenplay for a road trip film about friendship, exploring themes of self-discovery and taking risks.',
+      "Write a screenplay for a road trip film about friendship, exploring themes of self-discovery and taking risks.",
   },
   {
-    icon: 'i-heroicons-gift-solid',
+    icon: "i-heroicons-gift-solid",
     prompt:
-      'Generate creative and thoughtful gift ideas for different occasions, considering the recipient\'s interests and budget.',
+      "Generate creative and thoughtful gift ideas for different occasions, considering the recipient's interests and budget.",
   },
   {
-    icon: 'i-heroicons-chat-bubble-bottom-center-text-solid',
+    icon: "i-heroicons-chat-bubble-bottom-center-text-solid",
     prompt:
-      'Write a dialogue between two characters with opposing viewpoints on a current social issue exploring the complexities of the issue.',
+      "Write a dialogue between two characters with opposing viewpoints on a current social issue exploring the complexities of the issue.",
   },
   {
-    icon: 'i-heroicons-chart-bar-solid',
+    icon: "i-heroicons-chart-bar-solid",
     prompt:
-      'Analyze market trends in a specific industry, identifying key drivers, challenges, and opportunities for growth.',
+      "Analyze market trends in a specific industry, identifying key drivers, challenges, and opportunities for growth.",
   },
   {
-    icon: 'i-heroicons-user-solid',
+    icon: "i-heroicons-user-solid",
     prompt:
-      'Write a personal essay about a significant life experience that shaped your values and perspectives, reflecting on the lessons learned.',
+      "Write a personal essay about a significant life experience that shaped your values and perspectives, reflecting on the lessons learned.",
   },
   {
-    icon: 'i-heroicons-building-library-solid',
+    icon: "i-heroicons-building-library-solid",
     prompt:
-      'Create a research paper on a topic related to AI, exploring the latest advancements, ethical considerations, and potential future applications.',
+      "Create a research paper on a topic related to AI, exploring the latest advancements, ethical considerations, and potential future applications.",
   },
   {
-    icon: 'i-heroicons-pencil-solid',
+    icon: "i-heroicons-pencil-solid",
     prompt:
-      'Write a short story about friends on a treasure hunt, exploring themes of friendship, teamwork, and following your dreams.',
+      "Write a short story about friends on a treasure hunt, exploring themes of friendship, teamwork, and following your dreams.",
   },
   {
-    icon: 'i-heroicons-film-solid',
+    icon: "i-heroicons-film-solid",
     prompt:
-      'Create a screenplay about a young artist finding their voice, exploring themes of creativity, self-expression, and believing in yourself.',
+      "Create a screenplay about a young artist finding their voice, exploring themes of creativity, self-expression, and believing in yourself.",
   },
   {
-    icon: 'i-heroicons-code-solid',
+    icon: "i-heroicons-code-solid",
     prompt:
-      'Generate JavaScript code for a simple web app with a database, including data storage, retrieval, and user authentication.',
+      "Generate JavaScript code for a simple web app with a database, including data storage, retrieval, and user authentication.",
   },
   {
-    icon: 'i-heroicons-document-text-solid',
+    icon: "i-heroicons-document-text-solid",
     prompt:
-      'Write a blog post about the impact of social media on society, discussing benefits, drawbacks and  ethical considerations.',
+      "Write a blog post about the impact of social media on society, discussing benefits, drawbacks and  ethical considerations.",
   },
   {
-    icon: 'i-heroicons-light-bulb-solid',
+    icon: "i-heroicons-light-bulb-solid",
     prompt:
-      'Brainstorm ideas for a new AI-powered business, considering the potential market, technology, and value proposition.',
+      "Brainstorm ideas for a new AI-powered business, considering the potential market, technology, and value proposition.",
   },
-]
+];
 
 export default defineEventHandler(async () => {
-  const tempPromptCards = [...promptCards]
+  const tempPromptCards = [...promptCards];
 
-  for (let currentIndex = tempPromptCards.length - 1; currentIndex > 0; currentIndex--) {
+  for (
+    let currentIndex = tempPromptCards.length - 1;
+    currentIndex > 0;
+    currentIndex--
+  ) {
     const randomIndex = Math.floor(Math.random() * (currentIndex + 1));
 
     [tempPromptCards[currentIndex], tempPromptCards[randomIndex]] = [
       tempPromptCards[randomIndex],
       tempPromptCards[currentIndex],
-    ]
+    ];
   }
 
-  return tempPromptCards.slice(0, 4) 
-})
+  return tempPromptCards.slice(0, 4);
+});

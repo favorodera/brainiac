@@ -4,4 +4,4 @@ const brainiac = ref<ChatHistory>([]);
 
 export default async function () {
   return brainiac;
-};
+}

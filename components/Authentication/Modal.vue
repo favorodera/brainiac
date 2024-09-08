@@ -7,7 +7,7 @@
       base: 'grid place-content-center dark:bg-transparent',
     }"
   >
-    <div class="dots w-12 h-12 grid cols-3 place-items-center  ">
+    <div class="dots w-12 h-12 grid cols-3 place-items-center">
       <div
         v-for="n in 9"
         :key="n"
@@ -18,23 +18,23 @@
 </template>
 
 <style lang="scss">
-.dots>div:nth-of-type(2),
-.dots>div:nth-of-type(4) {
+.dots > div:nth-of-type(2),
+.dots > div:nth-of-type(4) {
   animation-delay: 0.25s;
 }
 
-.dots>div:nth-of-type(3),
-.dots>div:nth-of-type(5),
-.dots>div:nth-of-type(7) {
+.dots > div:nth-of-type(3),
+.dots > div:nth-of-type(5),
+.dots > div:nth-of-type(7) {
   animation-delay: 0.5s;
 }
 
-.dots>div:nth-of-type(6),
-.dots>div:nth-of-type(8) {
+.dots > div:nth-of-type(6),
+.dots > div:nth-of-type(8) {
   animation-delay: 0.75s;
 }
 
-.dots>div:nth-of-type(9) {
+.dots > div:nth-of-type(9) {
   animation-delay: 1s;
 }
 

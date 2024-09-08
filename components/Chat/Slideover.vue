@@ -21,7 +21,9 @@ const { data: claims } = await useFetch('/api/claims', {
             size="lg"
           />
 
-          <div class="flex flex-col items-start justify-between truncate w-full">
+          <div
+            class="flex flex-col items-start justify-between truncate w-full"
+          >
             <p class="text-lg font-700 text-#FFFFFFA3 truncate w-full">
               {{ claims?.name || claims?.email.split("@")[0] }}
             </p>
@@ -68,10 +70,12 @@ const { data: claims } = await useFetch('/api/claims', {
             },
           },
         }"
-        @click="() => {
-          useSlideover().close()
-          navigateTo('/chat')
-        }"
+        @click="
+          () => {
+            useSlideover().close();
+            navigateTo('/chat');
+          }
+        "
       />
 
       <div>
@@ -79,7 +83,7 @@ const { data: claims } = await useFetch('/api/claims', {
           Chats
         </p>
       </div>
-      <ChatChats />
+      <ChatRecentChats />
     </div>
   </USlideover>
 </template>

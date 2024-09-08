@@ -1,33 +1,73 @@
+<!-- eslint-disable vue/no-v-html -->
+<template>
+  <div
+    v-for="(chatFragment, index) in chatHistory"
+    :key="index"
+    :class="{
+      'items-start justify-right': index % 2 === 0,
+      'items-start justify-left': index % 2 !== 0,
+    }"
+    class="flex flex-row-reverse gap-2 max-w-4xl w-full break-all"
+  >
+    <UAvatar
+      v-if="index % 2 === 0"
+      :src="claims?.picture"
+      :alt="claims?.name || claims?.email.toUpperCase()"
+      size="xs"
+    />
+    <div>
+      <span
+        v-for="part in chatFragment.parts"
+        :key="part.text"
+      >
+        <div
+          v-if="index % 2 === 0"
+          class="bg-#1e1f20 rounded-2xl p-4"
+        >
+          <span>{{ part.text }}</span>
+        </div>
+        <span
+          v-else
+          class="flex flex-col gap-2 bg-#1e1f20 rounded-2xl p-4"
+          v-html="markdown.render(part.text)"
+        />
+      </span>
+    </div>
+
+    <UIcon
+      v-if="index % 2 !== 0"
+      name="i-hugeicons-ai-brain-02"
+      class="w-6 h-6 text-#217BFE flex-shrink-0"
+    />
+  </div>
+</template>
+
 <script setup lang="ts">
 import markdownIt from 'markdown-it'
-import hljs from 'highlight.js'
-import DOMPurify from 'dompurify'
+import Shiki from '@shikijs/markdown-it'
 
-const markdown = markdownIt('commonmark', {
-  breaks: true,
-  linkify: true,
-  html: true,
-  langPrefix: 'language-',
-  highlight: function (str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      const highlightedCode = hljs.highlight(str, {
-        language: lang,
-        ignoreIllegals: true,
-      }).value
-      const sanitizedCode = DOMPurify.sanitize(highlightedCode, {
-        ALLOWED_TAGS: ['pre', 'code'],
-        ALLOWED_ATTR: ['class'],
-      })
-      return sanitizedCode
-    }
-    return ''
-  },
+const markdown = new markdownIt().use(
+  await Shiki({
+    theme: 'aurora-x',
+  }),
+  { breaks: true, linkify: true, html: true, langPrefix: 'language-' },
+)
 
-})
+const chatID = useRoute().path.split('/')[2]
 
 const chatHistory = ref < ChatHistory > ([])
 
 const brainiac = await useBrainiac()
+
+await useFetch(`/api/getchat?chatID=${chatID}`, { method: 'GET' }).then(
+  (oldChats) => {
+    if (oldChats.data.value) {
+      brainiac.value = oldChats.data.value
+    }
+  },
+)
+
+const { data: claims } = await useFetch('/api/claims', { method: 'GET' })
 
 watch(
   () => brainiac.value,
@@ -37,43 +77,3 @@ watch(
   { immediate: true },
 )
 </script>
-
-<template>
-  <div
-    v-for="(chatFragment, index) in chatHistory"
-    :key="index"
-    :class="{
-      '': index % 2 === 0,
-      'self-start flex-col-reverse': index % 2 !== 0,
-    }"
-    class="rounded-2xl p-4 flex flex-col gap-4 max-w-2xl w-full bg-#1e1f20"
-  >
-    <UIcon
-      v-if="index % 2 === 0"
-      name="i-heroicons-user-circle"
-      class="w-6 h-6 text-gray-400 flex-shrink-0 self-end"
-    />
-
-    <div>
-      <span
-        v-for="part in chatFragment.parts"
-        :key="part.text"
-      >
-        <template v-if="index % 2 === 0">
-          <span>{{ part.text }}</span>
-        </template>
-        <span
-          v-else
-          class="flex flex-col gap-4"
-          v-html="markdown.render(part.text)"
-        />
-      </span>
-    </div>
-
-    <UIcon
-      v-if="index % 2 !== 0"
-      name="i-hugeicons-ai-brain-02"
-      class="w-6 h-6 text-gray-400 flex-shrink-0"
-    />
-  </div>
-</template>

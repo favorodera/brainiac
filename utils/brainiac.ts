@@ -1,6 +1,5 @@
 const textarea = document?.querySelector("textarea");
 let temporary = "";
-let chatID = "";
 
 export default async function (prompt: string) {
   if (!prompt) return;
@@ -26,17 +25,16 @@ export default async function (prompt: string) {
         ? true
         : false;
 
-    setTimeout(() => {
-      chatID = useRoute().path.split("/")[2];
-    }, 2000);
-
     const response = await $fetch("/api/brainiac", {
       method: "POST",
       body: JSON.stringify({ prompt: prompt, newChat: newChat }),
     });
 
     if (response) {
-      (await useBrainiac()).value.push({ role: 'model', parts: [{ text: response }] })
+      (await useBrainiac()).value.push({
+        role: "model",
+        parts: [{ text: response }],
+      });
     }
 
     temporary = "";
@@ -49,10 +47,10 @@ export default async function (prompt: string) {
         }),
       });
 
-      await $fetch("/api/chatdata", {
+      await $fetch("/api/savechat", {
         method: "PATCH",
         body: JSON.stringify({
-          chatID: chatID,
+          chatID: useRoute().path.split("/")[2],
           summary: summary,
           chatFragment: [
             { role: "user", parts: [{ text: prompt }] },
@@ -61,10 +59,10 @@ export default async function (prompt: string) {
         }),
       });
     } else {
-      await $fetch("/api/chatdata", {
+      await $fetch("/api/savechat", {
         method: "PATCH",
         body: JSON.stringify({
-          chatID: chatID,
+          chatID: useRoute().path.split("/")[2],
           chatFragment: [
             { role: "user", parts: [{ text: prompt }] },
             { role: "model", parts: [{ text: response }] },

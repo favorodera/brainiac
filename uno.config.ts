@@ -7,7 +7,7 @@ import {
   presetWebFonts,
   transformerDirectives,
   transformerVariantGroup,
-} from 'unocss'
+} from "unocss";
 
 export default defineConfig({
   presets: [
@@ -15,14 +15,14 @@ export default defineConfig({
     presetAttributify(),
     presetIcons({
       extraProperties: {
-        'display': 'inline-block',
-        'vertical-align': 'middle',
-      }
+        display: "inline-block",
+        "vertical-align": "middle",
+      },
     }),
     presetTypography(),
     presetWebFonts({
-      provider: 'google',
+      provider: "google",
     }),
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
-})
+});

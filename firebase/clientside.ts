@@ -1,18 +1,18 @@
-import { initializeApp } from 'firebase/app' 
+import { initializeApp } from "firebase/app";
 import {
-  getAuth, 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword, 
-  setPersistence, 
-  inMemoryPersistence, 
-  GoogleAuthProvider, 
-  signInWithPopup, 
-  getIdToken, 
-  signOut, 
-  sendEmailVerification, 
-} from 'firebase/auth'
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  setPersistence,
+  inMemoryPersistence,
+  GoogleAuthProvider,
+  signInWithPopup,
+  getIdToken,
+  signOut,
+  sendEmailVerification,
+} from "firebase/auth";
 
-const runtime = useRuntimeConfig()
+const runtime = useRuntimeConfig();
 
 const app = initializeApp({
   apiKey: runtime.public.firebaseApiKey,
@@ -22,21 +22,21 @@ const app = initializeApp({
   messagingSenderId: runtime.public.firebaseMessagingSenderId,
   appId: runtime.public.firebaseAppId,
   measurementId: runtime.public.firebaseMeasurementId,
-})
+});
 
-const auth = getAuth(app)
+const auth = getAuth(app);
 
-const provider = new GoogleAuthProvider()
+const provider = new GoogleAuthProvider();
 
 export {
-  auth, 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword, 
-  setPersistence, 
-  inMemoryPersistence, 
-  provider, 
-  signInWithPopup, 
-  getIdToken, 
-  signOut, 
-  sendEmailVerification, 
-}
+  auth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  setPersistence,
+  inMemoryPersistence,
+  provider,
+  signInWithPopup,
+  getIdToken,
+  signOut,
+  sendEmailVerification,
+};

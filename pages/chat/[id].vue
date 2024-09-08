@@ -11,7 +11,7 @@ definePageMeta({
 
 <template>
   <div
-    class="w-full max-w-70.875rem flex-1 flex flex-col gap-8 items-center justify-start p-0"
+    class="w-full max-w-full flex-1 flex flex-col gap-8 justify-start items-center"
   >
     <ChatBubbles />
   </div>

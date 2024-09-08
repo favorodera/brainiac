@@ -34,9 +34,9 @@ useHead({
 }
 
 .page-enter-from,
-.page-leave-to ,
+.page-leave-to,
 .layout-enter-from,
-.layout-leave-to{
+.layout-leave-to {
   opacity: 0;
 }
 </style>

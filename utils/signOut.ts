@@ -1,3 +1,3 @@
 export default async function () {
-  await $fetch('/api/signout', { method: 'DELETE' })
+  await $fetch("/api/signout", { method: "DELETE" });
 }

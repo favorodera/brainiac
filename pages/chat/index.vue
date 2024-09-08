@@ -10,7 +10,7 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="w-full  flex flex-col gap-8 items-center justify-between p-0">
+  <div class="w-full flex flex-col gap-8 items-center justify-between p-0">
     <ChatIntro />
 
     <ChatPromptCards />

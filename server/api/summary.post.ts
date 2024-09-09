@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const summary = await model.generateContent(
-    ` In less than 5 to 10 words summarize this prompt, If it is a greeting just reply "Greetings and Inquiry":'${prompt}`
+    `In less than 5 to 10 words summarize this prompt, If it is a greeting just reply "Greetings and Inquiry":'${prompt}`
   );
 
   return summary.response.text();

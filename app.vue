@@ -1,11 +1,3 @@
-<script setup lang="ts">
-useHead({
-  titleTemplate(title) {
-    return title ? `Brainiac | ${title}` : 'Brainiac'
-  },
-})
-</script>
-
 <template>
   <NuxtLayout>
     <NuxtPage />
@@ -24,6 +16,14 @@ useHead({
 
   <USlideovers />
 </template>
+
+<script setup lang="ts">
+useHead({
+  titleTemplate(title) {
+    return title ? `Brainiac | ${title}` : 'Brainiac'
+  },
+})
+</script>
 
 <style lang="scss">
 .page-enter-active,

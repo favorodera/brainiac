@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import useBrainiacStore from '~/store/brainiacStore'
-</script>
-
 <template>
   <div
     class="w-full max-w-45rem flex p-r items-center rounded-1 justify-center gap-1 dark:bg-#1e1f20"
@@ -56,3 +52,7 @@ import useBrainiacStore from '~/store/brainiacStore'
     </UButton>
   </div>
 </template>
+
+<script setup lang="ts">
+import useBrainiacStore from '~/store/brainiacStore'
+</script>

@@ -1,9 +1,3 @@
-<script lang="ts" setup>
-const { data: claims } = await useFetch('/api/claims', {
-  method: 'GET',
-})
-</script>
-
 <template>
   <USlideover
     :overlay="false"
@@ -87,3 +81,9 @@ const { data: claims } = await useFetch('/api/claims', {
     </div>
   </USlideover>
 </template>
+
+<script lang="ts" setup>
+const { data: claims } = await useFetch('/api/claims', {
+  method: 'GET',
+})
+</script>

@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import useSchemaStore from '~/store/authSchemaStore'
-
-const { signUpSchema } = useSchemaStore()
-
-const state = reactive({
-  email: undefined,
-  password: undefined,
-  confirmPassword: undefined,
-})
-</script>
-
 <template>
   <UContainer
     as="div"
@@ -203,3 +191,15 @@ const state = reactive({
     </UForm>
   </UContainer>
 </template>
+
+<script setup lang="ts">
+import useSchemaStore from '~/store/authSchemaStore'
+
+const { signUpSchema } = useSchemaStore()
+
+const state = reactive({
+  email: undefined,
+  password: undefined,
+  confirmPassword: undefined,
+})
+</script>

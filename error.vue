@@ -1,16 +1,3 @@
-<script setup lang="ts">
-defineProps({
-  error: {
-    type: Object,
-    default: null,
-  },
-})
-
-useHead({
-  title: 'Brainiac | Error',
-})
-</script>
-
 <template>
   <div
     class="w-full p-5 flex flex-col min-h-screen justify-between items-center"
@@ -89,3 +76,16 @@ useHead({
     <CustomFooter />
   </div>
 </template>
+
+<script setup lang="ts">
+defineProps({
+  error: {
+    type: Object,
+    default: null,
+  },
+})
+
+useHead({
+  title: 'Brainiac | Error',
+})
+</script>

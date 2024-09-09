@@ -1,9 +1,3 @@
-<script setup lang="ts">
-const { data: chats } = await useFetch('/api/getchat', {
-  method: 'GET',
-})
-</script>
-
 <template>
   <div v-if="chats">
     <div
@@ -16,3 +10,9 @@ const { data: chats } = await useFetch('/api/getchat', {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const { data: chats } = await useFetch('/api/getchat', {
+  method: 'GET',
+})
+</script>

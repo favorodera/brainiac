@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
         .get();
 
       // If chatID is provided, return only the chat with that ID
-      if (chatID) {
+      if (chatID ) {
         return chatData.data()?.chats[chatID].messages;
       } else {
         // If no chatID, return all chats

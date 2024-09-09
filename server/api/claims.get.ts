@@ -1,5 +1,5 @@
 import { auth } from "~/firebase/serverside";
-import { Claims } from "~/utils/types";
+import type { Claims } from "~/utils/types";
 
 export default defineEventHandler(async (event) => {
   const cookie = getCookie(event, "session");

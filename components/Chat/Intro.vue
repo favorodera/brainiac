@@ -1,9 +1,3 @@
-<script lang="ts" setup>
-const { data: claims } = await useFetch('/api/claims', {
-  method: 'GET',
-})
-</script>
-
 <template>
   <div
     class="flex flex-col items-center justify-center gap-4 w-full max-w-41.875rem"
@@ -24,3 +18,9 @@ const { data: claims } = await useFetch('/api/claims', {
       to get answers to your questions.</span>
   </div>
 </template>
+
+<script lang="ts" setup>
+const { data: claims } = await useFetch('/api/claims', {
+  method: 'GET',
+})
+</script>

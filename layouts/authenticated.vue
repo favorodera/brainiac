@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import ChatSlideover from '~/components/Chat/Slideover.vue'
-</script>
-
 <template>
   <main
     class="w-full p-5 flex flex-col min-h-screen gap-10 justify-between items-center"
@@ -36,3 +32,7 @@ import ChatSlideover from '~/components/Chat/Slideover.vue'
     </div>
   </main>
 </template>
+
+<script setup lang="ts">
+import ChatSlideover from '~/components/Chat/Slideover.vue'
+</script>

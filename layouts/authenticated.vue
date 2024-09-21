@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full max-w-90rem flex flex-col min-h-full gap-10 justify-between items-center"
+    class="w-full flex flex-col min-h-full gap-10 justify-between items-center"
   >
     <CustomNav>
       <template #menu-button>

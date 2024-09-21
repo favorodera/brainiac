@@ -4,7 +4,7 @@
       class="flex flex-col gap-0rem text-center items-center justify-center w-full"
     >
       <span
-        class="bg-gradient-to-r from-#217BFE via-#ac87eb to-#ee4d5d bg-clip-text text-size-6xl text-transparent font-700 tracking-0.2rem"
+        class="bg-gradient-to-r from-#217BFE via-#ac87eb to-#ee4d5d bg-clip-text text-size-5xl text-transparent font-700 tracking-0.2rem"
       >Brainiac</span>
       <span class="text-size-1rem font-700 text-#FFFFFFA3">Your AI Companion for Creativity and Productivity.</span>
       <NuxtLink

@@ -8,7 +8,7 @@ const genAI = new GoogleGenerativeAI(runtime.geminiApiKey);
 const model = genAI.getGenerativeModel({
   model: "gemini-1.5-flash",
   systemInstruction:
-    "You are a helpful AI assistant whose name is BRAINIAC, also your name should be written in bold capital letters,also be precise and straight to point.",
+    "You are a helpful AI assistant whose name is BRAINIAC, You should be precise and straight to point, Do not say your name unless asked and when asked your name should be in bold uppercase.",
 });
 
 const chatHistory: ChatHistory = [];

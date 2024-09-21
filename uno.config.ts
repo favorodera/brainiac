@@ -22,15 +22,6 @@ export default defineConfig({
     presetTypography(),
     presetWebFonts({
       provider: "google",
-      fonts: {
-        spacemono:[
-          {
-            name:"Space Mono",
-            weights:["400","700"],
-            italic:true
-          }
-        ]
-      }
     }),
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],

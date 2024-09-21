@@ -1,4 +1,4 @@
-# Brainiac (Your AI Companion)
+# [Brainiac (Your AI Companion)](https://brainiacai.vercel.app/)
 
 ## What is Brainiac?
 

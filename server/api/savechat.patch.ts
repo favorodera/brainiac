@@ -6,51 +6,32 @@ export default defineEventHandler(async (event) => {
 
   if (cookies) {
     const claims = await auth.verifySessionCookie(cookies);
-
     const {
       chatFragment,
-      chatID,
-      summary,
-    }: {
-      chatFragment: ChatHistory;
-      chatID: string;
-      summary: string;
-    } = await readBody(event);
+      chatId,
+      chatSummary,
+    }: { chatFragment: ChatHistory; chatId: string; chatSummary: string } =
+      await readBody(event);
 
-    if (claims) {
+    if (claims && chatId.slice(0, -6) === claims.sub) {
+      const databaseReference = database
+        .collection("userdata")
+        .doc(claims.email as string);
 
-      // Check if the userId in the chatId and the userId in the claims are the same
-      if (chatID?.slice(0, -6) === claims?.sub) {
-
-        // Check if summary is sent in the request indicating it is a new chat
-        if (summary) {
-
-          await database
-            .collection("userdata")
-            .doc(claims?.email as string)
-            .update({
-              [`chats.${chatID}`]: {
-                summary: summary,
-                messages: chatFragment,
-              },
-            });
-          
-        } else {
-
-          await database
-            .collection("userdata")
-            .doc(claims?.email as string)
-            .update({
-              [`chats.${chatID}.messages`]: FieldValue.arrayUnion(
-                ...chatFragment
-              ),
-            });
-          
-        }
-
-        return { message: "Chat saved" };
+      if (chatSummary) {
+        databaseReference.update({
+          [`chats.${chatId}`]: {
+            summary: chatSummary,
+            messages: chatFragment,
+          },
+        });
+      } else {
+        databaseReference.update({
+          [`chats.${chatId}.messages`]: FieldValue.arrayUnion(...chatFragment),
+        });
       }
 
+      return { message: "Chat Saved" };
     }
   }
 });

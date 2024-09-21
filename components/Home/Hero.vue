@@ -12,7 +12,7 @@
         class="border-1 pos-relative p-2 rounded-xl hover:b-y-#a24ae7 hover:b-s-#f66a4b hover:b-e-#4859f3 hover:p-r-2.5rem group mt-5 transition-property-all transition-delay-50 transition-ease transition-duration-1000"
       >
         <span
-          class="transition-property-all bg-white transition-delay-50 transition-ease-linear transition-duration-1000 group-hover:bg-gradient-to-r from-#217BFE via-#ac87eb to-#ee4d5d bg-clip-text group-hover-text-transparent font-600"
+          class="transition-property-all text-white bg-white delay-50 ease-linear duration-1000 group-hover:bg-gradient-to-r from-#217BFE via-#ac87eb to-#ee4d5d bg-clip-text group-hover-text-transparent font-600"
         >Chat with Brainiac</span>
         <UIcon
           name="i-hugeicons-ai-brain-02"

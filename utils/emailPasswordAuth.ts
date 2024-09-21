@@ -1,5 +1,3 @@
-import { createPinia } from "pinia";
-import type { z } from "zod";
 import { FirebaseError } from "firebase/app";
 import {
   auth,
@@ -9,38 +7,18 @@ import {
   setPersistence,
   signInWithEmailAndPassword,
 } from "~/firebase/clientside";
-import type { FormSubmitEvent } from "#ui/types";
-import AuthenticationModal from "~/components/Authentication/Modal.vue";
-import useAuthSchemaStore from "~/store/authSchemaStore";
 
-// Get the signin schema from the auth schema store
-const _signInSchema = useAuthSchemaStore(createPinia()).signInSchema;
-type Schema = z.infer<typeof _signInSchema>;
-
-export default async function (event: FormSubmitEvent<Schema>) {
-  // Open the authentication modal
-  useModal().open(AuthenticationModal);
+export default async function (email: string, password: string) {
+  const isAuthRunning = await useIsAuthRunning();
+  isAuthRunning.passwordauth = true;
 
   try {
-    // Set persistence to in memory
     await setPersistence(auth, inMemoryPersistence);
+    const credentials = await signInWithEmailAndPassword(auth, email, password);
 
-    // Sign in with email and password
-    const credentials = await signInWithEmailAndPassword(
-      auth,
-      event.data.email,
-      event.data.password
-    );
-
-    // Check if email is verified
     if (!credentials.user.emailVerified) {
-      // Send verification email
       sendEmailVerification(credentials.user);
-
-      // Close the authentication modal
-      useModal().close();
-
-      // Show toast notification
+      isAuthRunning.passwordauth = false;
       useToast().add({
         id: "account-not-verified",
         title: "Email Address Not Verified",
@@ -48,7 +26,6 @@ export default async function (event: FormSubmitEvent<Schema>) {
         icon: "i-heroicons-solid-exclamation-circle",
         timeout: 0,
         color: "red",
-        // Redirect to verification page on click
         click: async () => {
           await navigateTo("/authentication/verification");
         },
@@ -58,25 +35,17 @@ export default async function (event: FormSubmitEvent<Schema>) {
           background: "dark:bg-#1e1f20 bg-#1e1f20",
         },
       });
-
       return;
     }
 
-    // Get the ID token
     const idToken = await getIdToken(credentials.user);
-
-    // Send the ID token to the backend for authentication
     await $fetch("/api/emailpasswordauth", {
       method: "POST",
       body: JSON.stringify({
         idToken: idToken,
       }),
     });
-
-    // Close the authentication modal
-    useModal().close();
-
-    // Show success toast and redirect to chat page
+    isAuthRunning.passwordauth = false;
     useToast().add({
       id: "login-success",
       title: "Login Successful",
@@ -96,10 +65,8 @@ export default async function (event: FormSubmitEvent<Schema>) {
         background: "bg-#1e1f20 dark:bg-#1e1f20",
       },
     });
-    // Handle firebase errors
   } catch (error) {
     if (error instanceof FirebaseError) {
-      // Handle invalid credentials error
       if (error.code === "auth/invalid-credential") {
         useToast().add({
           id: "invalid-credential",
@@ -107,9 +74,7 @@ export default async function (event: FormSubmitEvent<Schema>) {
           description: "Please check your email and password",
           icon: "i-heroicons-solid-shield-exclamation",
           timeout: 3000,
-          closeButton: {
-            icon: undefined,
-          },
+          closeButton: { icon: undefined },
           color: "red",
           ui: {
             ring: "ring-0",
@@ -117,7 +82,6 @@ export default async function (event: FormSubmitEvent<Schema>) {
             background: "bg-#1e1f20 dark:bg-#1e1f20",
           },
         });
-        // Handle network errors
       } else if (error.code === "auth/network-request-failed") {
         useToast().add({
           id: "network-request-failed",
@@ -125,9 +89,7 @@ export default async function (event: FormSubmitEvent<Schema>) {
           description: "Please check your internet connection",
           icon: "i-heroicons-wifi-solid",
           timeout: 3000,
-          closeButton: {
-            icon: undefined,
-          },
+          closeButton: { icon: undefined },
           color: "red",
           ui: {
             ring: "ring-0",
@@ -135,7 +97,6 @@ export default async function (event: FormSubmitEvent<Schema>) {
             background: "dark:bg-#1e1f20 bg-#1e1f20",
           },
         });
-        // Handle too many requests error
       } else if (error.code === "auth/too-many-requests") {
         useToast().add({
           id: "too-many-requests",
@@ -143,9 +104,7 @@ export default async function (event: FormSubmitEvent<Schema>) {
           description: "Please try again later",
           icon: "i-heroicons-solid-exclamation-circle",
           timeout: 3000,
-          closeButton: {
-            icon: undefined,
-          },
+          closeButton: { icon: undefined },
           color: "red",
           ui: {
             ring: "ring-0",
@@ -153,7 +112,6 @@ export default async function (event: FormSubmitEvent<Schema>) {
             background: "dark:bg-#1e1f20 bg-#1e1f20",
           },
         });
-        // Handle other errors
       } else {
         useToast().add({
           id: "login-error",
@@ -161,9 +119,7 @@ export default async function (event: FormSubmitEvent<Schema>) {
           description: "An error occurred while logging in",
           icon: "i-heroicons-solid-exclamation-circle",
           timeout: 3000,
-          closeButton: {
-            icon: undefined,
-          },
+          closeButton: { icon: undefined },
           color: "red",
           ui: {
             ring: "ring-0",
@@ -174,7 +130,6 @@ export default async function (event: FormSubmitEvent<Schema>) {
       }
     }
   } finally {
-    // Close the authentication modal
-    useModal().close();
+    isAuthRunning.passwordauth = false;
   }
 }

@@ -32,7 +32,7 @@
       :state="state"
       :error="signInSchema"
       class="shadow-[0rem_0rem_1rem_1rem_#80808027] px-2 py-5 sm:p-6 w-full max-w-lg grid gap-8 b b-transparent rounded-2"
-      @submit="emailPasswordAuth"
+      @submit="emailPasswordAuth(state.email, state.password)"
     >
       <header class="grid gap-1 place-items-center">
         <UIcon
@@ -45,8 +45,9 @@
         <h3 class="text-gray text-sm">
           Don't have an account?
           <NuxtLink
+            :style="{ 'pointer-events': isAuthRunning.passwordauth || isAuthRunning.googleauth ? 'none' : 'auto' }"
             to="/authentication/signup"
-            class="text-#4859f3 transition-color transition-delay-50 transition-duration-1000 hover:text-white text-sm font-500"
+            class="text-#4859f3 property-color delay-50 duration-1000 hover:text-white text-sm font-500"
           >
             Sign up </NuxtLink>.
         </h3>
@@ -61,7 +62,7 @@
       >
         <UInput
           v-model="state.email"
-          autocomplete
+          :disabled="isAuthRunning.passwordauth || isAuthRunning.googleauth"
           variant="none"
           placeholder="me@example.com"
           type="email"
@@ -94,6 +95,7 @@
       >
         <UInput
           v-model="state.password"
+          :disabled="isAuthRunning.passwordauth || isAuthRunning.googleauth"
           autocomplete
           variant="none"
           type="password"
@@ -109,8 +111,9 @@
         </UInput>
         <template #hint>
           <NuxtLink
-            to=""
-            class="text-#4859f3 text-sm font-700"
+            :style="{ 'pointer-events': isAuthRunning.passwordauth || isAuthRunning.googleauth ? 'none' : 'auto' }"
+            to="/authentication/passwordreset"
+            class="text-#4859f3 property-color delay-50 duration-1000 hover:text-white text-sm font-500"
           >
             Forgot password?
           </NuxtLink>
@@ -129,6 +132,11 @@
 
       <UButton
         type="submit"
+        padded
+        trailing
+        :disabled="isAuthRunning.googleauth"
+        loading-icon="i-svg-spinners-270-ring"
+        :loading="isAuthRunning.passwordauth"
         color="white"
         variant="solid"
         label="Sign in"
@@ -150,6 +158,10 @@
       </p>
 
       <UButton
+        :disabled="isAuthRunning.passwordauth"
+        :trailing="isAuthRunning.googleauth"
+        loading-icon="i-svg-spinners-270-ring"
+        :loading="isAuthRunning.googleauth"
         icon="i-ion-logo-google"
         color="white"
         variant="solid"
@@ -166,7 +178,7 @@
             },
           },
         }"
-        @click="() => googleAuth()"
+        @click="googleAuth()"
       />
     </UForm>
   </UContainer>
@@ -178,7 +190,9 @@ import useSchemaStore from '~/store/authSchemaStore'
 const { signInSchema } = useSchemaStore()
 
 const state = reactive({
-  email: undefined,
-  password: undefined,
+  email: '',
+  password: '',
 })
+
+const isAuthRunning = await useIsAuthRunning()
 </script>

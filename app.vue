@@ -3,8 +3,6 @@
     <NuxtPage />
   </NuxtLayout>
 
-  <UModals />
-
   <UNotifications
     :ui="{
       wrapper: 'h-min flex flex-col items-start justify-start',

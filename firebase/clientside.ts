@@ -10,6 +10,7 @@ import {
   getIdToken,
   signOut,
   sendEmailVerification,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 
 const runtime = useRuntimeConfig();
@@ -39,4 +40,5 @@ export {
   getIdToken,
   signOut,
   sendEmailVerification,
+  sendPasswordResetEmail,
 };

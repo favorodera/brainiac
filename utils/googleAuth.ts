@@ -1,6 +1,4 @@
 import { FirebaseError } from "firebase/app";
-import AuthenticationModal from "~/components/Authentication/Modal.vue";
-
 import {
   auth,
   getIdToken,
@@ -11,32 +9,24 @@ import {
 } from "~/firebase/clientside";
 
 export default async function () {
-  // Open the authentication modal
-  useModal().open(AuthenticationModal);
+  const isAuthRunning = await useIsAuthRunning();
+  isAuthRunning.googleauth = true;
 
   try {
-    // Set persistence to in memory
     await setPersistence(auth, inMemoryPersistence);
-
-    // Sign in with Google popup
     const credentials = await signInWithPopup(auth, provider);
-
-    // Get the ID token
     const idToken = await getIdToken(credentials.user);
 
-    // Send the ID token and user's name to the backend for authentication
     await $fetch("/api/googleauth", {
       method: "POST",
       body: {
-        idToken: idToken,
+        idToken,
         name: credentials.user.displayName,
       },
     });
 
-    // Close the authentication modal
-    useModal().close();
+    isAuthRunning.googleauth = false;
 
-    // Show success toast and redirect to chat page
     useToast().add({
       id: "account-creation-success",
       title: "Login Successful",
@@ -56,7 +46,6 @@ export default async function () {
         background: "dark:bg-#1e1f20",
       },
     });
-    // Handle firebase errors
   } catch (error) {
     if (error instanceof FirebaseError) {
       useToast().add({
@@ -65,9 +54,7 @@ export default async function () {
         description: "An error occurred while logging in",
         icon: "i-heroicons-solid-exclamation-circle",
         timeout: 3000,
-        closeButton: {
-          icon: undefined,
-        },
+        closeButton: { icon: undefined },
         color: "red",
         ui: {
           ring: "ring-0",
@@ -77,7 +64,6 @@ export default async function () {
       });
     }
   } finally {
-    // Close the authentication modal
-    useModal().close();
+    isAuthRunning.googleauth = false;
   }
 }

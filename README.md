@@ -1,75 +1,55 @@
-# Nuxt 3 Minimal Starter
+# Brainiac (Your AI Companion)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## What is Brainiac?
 
-## Setup
+Brainiac is an AI chat app powered by Google's Gemini AI. It is designed to help you in your everyday life. It can be used for tasks such as:
 
-Make sure to install the dependencies:
+- Writing Emails or Articles
+- Helping with coding or programming tasks or issues
+- History narrating
+- Movie script writing
+- Story-telling among others
+
+## How to use Brainiac?
+
+- To use Brainiac you have to be a user by registering and or signing up with your email and password or google account
+- After verification and logging in you have brainiac to help you with your daily tasks
+
+## Technology used
+
+- [Nuxt 3](https://nuxt.com/) - The frontend
+- [Firebase](https://firebase.google.com/) - Backend
+- [Gemini AI](https://gemini.ai/) - AI Model
+- [Shiki](https://shiki.style/) - Syntax Highlighting
+- [Markdown It](https://github.com/markdown-it/markdown-it) - Markdown Parser
+- [UnoCss](https://unocss.dev/) - CSS Framework
+- [pinia](https://pinia.vuejs.org/) - State Management
+- [Nuxt UI](https://ui.nuxt.com/) - UI Components
+- [Icones](https://icones.js.org/collection/all) - Icons
+- [Zod](https://zod.dev/) - Validation
+
+## Open Source?
+
+Yes Brainiac is open source
+
+## Getting Started (Locally)
+
+To get brainiac running locally
+
+1. Clone the repository by running
 
 ```bash
-# npm
+git clone https://github.com/favorodera/brainiac.git
+```
+
+2. Install the dependencies by running
+
+```bash
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+3. Run the server by running
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

@@ -7,20 +7,17 @@ const genAI = new GoogleGenerativeAI(runtime.geminiApiKey);
 
 const model = genAI.getGenerativeModel({
   model: "gemini-1.5-flash",
-  systemInstruction: "You are a helpful AI assistant whose name is BRAINIAC",
+  systemInstruction:
+    "You are a helpful AI assistant whose name is BRAINIAC, also your name should be written in bold capital letters,also be precise and straight to point.",
 });
 
 const chatHistory: ChatHistory = [];
 
 export default defineEventHandler(async (event) => {
-  const { prompt, newChat }: { prompt: string; newChat: boolean } =
+  const { prompt, isNewChat }: { prompt: string; isNewChat: boolean } =
     await readBody(event);
 
-  if (!prompt) {
-    return;
-  }
-
-  if (newChat) {
+  if (isNewChat) {
     chatHistory.length = 0;
   }
 

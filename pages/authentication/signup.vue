@@ -1,5 +1,9 @@
 <template>
-  <AuthenticationSignUpForm />
+  <main class="w-full flex justify-center items-center">
+    <NuxtLayout name="guest">
+      <AuthenticationSignUpForm />
+    </NuxtLayout>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -8,6 +12,6 @@ useHead({
 })
 
 definePageMeta({
-  layout: 'guest',
+  layout: false,
 })
 </script>

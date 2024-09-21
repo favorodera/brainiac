@@ -1,9 +1,9 @@
 <template>
-  <div
-    class="w-full max-w-full flex-1 flex flex-col gap-8 justify-start items-center"
-  >
-    <ChatBubbles />
-  </div>
+  <main class="w-full flex items-center justify-center">
+    <NuxtLayout name="authenticated">
+      <ChatBubbles />
+    </NuxtLayout>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -12,7 +12,7 @@ useHead({
 })
 
 definePageMeta({
-  layout: 'authenticated',
+  layout: false,
   middleware: ['auth', 'chatid'],
 })
 </script>

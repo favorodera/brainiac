@@ -1,38 +1,23 @@
 import { FirebaseError } from "firebase/app";
-import { createPinia } from "pinia";
-import type { z } from "zod";
 import {
   auth,
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from "~/firebase/clientside";
-import AuthenticationModal from "~/components/Authentication/Modal.vue";
-import useAuthSchemaStore from "~/store/authSchemaStore";
-import type { FormSubmitEvent } from "#ui/types";
 
-// Get the signup schema from the auth schema store
-const _signUpSchema = useAuthSchemaStore(createPinia()).signUpSchema;
-type Schema = z.infer<typeof _signUpSchema>;
-
-export default async function (event: FormSubmitEvent<Schema>) {
-  // Open the authentication modal
-  useModal().open(AuthenticationModal);
+export default async function (email: string, password: string) {
+  const isAuthRunning = await useIsAuthRunning();
+  isAuthRunning.passwordauth = true;
 
   try {
-    // Create the user with email and password
     const credentials = await createUserWithEmailAndPassword(
       auth,
-      event.data.email,
-      event.data.password
+      email,
+      password
     );
-
-    // Send email verification
     await sendEmailVerification(credentials.user);
+    isAuthRunning.passwordauth = false;
 
-    // Close the authentication modal
-    useModal().close();
-
-    // Show success toast and redirect to verification page
     useToast().add({
       id: "account-creation-success",
       title: "Account Created Successfully",
@@ -42,9 +27,7 @@ export default async function (event: FormSubmitEvent<Schema>) {
       callback: async () => {
         await navigateTo("/authentication/verification");
       },
-      closeButton: {
-        icon: undefined,
-      },
+      closeButton: { icon: undefined },
       color: "emerald",
       ui: {
         ring: "ring-0",
@@ -53,9 +36,7 @@ export default async function (event: FormSubmitEvent<Schema>) {
       },
     });
   } catch (error) {
-    // Handle firebase errors
     if (error instanceof FirebaseError) {
-      // Handle existing email error
       if (error.code === "auth/email-already-in-use") {
         useToast().add({
           id: "account-already-exists",
@@ -66,9 +47,7 @@ export default async function (event: FormSubmitEvent<Schema>) {
           callback: async () => {
             await navigateTo("/authentication/signin");
           },
-          closeButton: {
-            icon: undefined,
-          },
+          closeButton: { icon: undefined },
           color: "red",
           ui: {
             ring: "ring-0",
@@ -76,7 +55,6 @@ export default async function (event: FormSubmitEvent<Schema>) {
             background: "dark:bg-#1e1f20 bg-#1e1f20",
           },
         });
-        // Handle network errors
       } else if (error.code === "auth/network-request-failed") {
         useToast().add({
           id: "network-request-failed",
@@ -84,9 +62,7 @@ export default async function (event: FormSubmitEvent<Schema>) {
           description: "Please check your internet connection",
           icon: "i-heroicons-wifi-solid",
           timeout: 3000,
-          closeButton: {
-            icon: undefined,
-          },
+          closeButton: { icon: undefined },
           color: "red",
           ui: {
             ring: "ring-0",
@@ -94,7 +70,6 @@ export default async function (event: FormSubmitEvent<Schema>) {
             background: "dark:bg-#1e1f20 bg-#1e1f20",
           },
         });
-        // Handle too many requests error
       } else if (error.code === "auth/too-many-requests") {
         useToast().add({
           id: "too-many-requests",
@@ -102,9 +77,7 @@ export default async function (event: FormSubmitEvent<Schema>) {
           description: "Please try again later",
           icon: "i-heroicons-solid-exclamation-circle",
           timeout: 3000,
-          closeButton: {
-            icon: undefined,
-          },
+          closeButton: { icon: undefined },
           color: "red",
           ui: {
             ring: "ring-0",
@@ -112,7 +85,6 @@ export default async function (event: FormSubmitEvent<Schema>) {
             background: "dark:bg-#1e1f20 bg-#1e1f20",
           },
         });
-        // Handle other errors
       } else {
         useToast().add({
           id: "account-creation-error",
@@ -120,9 +92,7 @@ export default async function (event: FormSubmitEvent<Schema>) {
           description: "Please try again later",
           icon: "i-heroicons-solid-exclamation-circle",
           timeout: 3000,
-          closeButton: {
-            icon: undefined,
-          },
+          closeButton: { icon: undefined },
           color: "red",
           ui: {
             ring: "ring-0",
@@ -133,7 +103,6 @@ export default async function (event: FormSubmitEvent<Schema>) {
       }
     }
   } finally {
-    // Close the authentication modal
-    useModal().close();
+    isAuthRunning.passwordauth = false;
   }
 }

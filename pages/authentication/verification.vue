@@ -1,5 +1,9 @@
 <template>
-  <AuthenticationVerification />
+  <main class="w-full flex justify-center items-center">
+    <NuxtLayout name="guest">
+      <AuthenticationVerification />
+    </NuxtLayout>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -8,7 +12,8 @@ useHead({
 })
 
 definePageMeta({
-  layout: 'guest',
+  layout: false,
+  middleware: ['verification'],
 })
 
 onBeforeMount(() => {

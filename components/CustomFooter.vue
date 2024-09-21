@@ -6,7 +6,7 @@
       to="https://www.github.com/favorodera"
       target="_blank"
       rel="noopener noreferrer"
-      class="hover:bg-gradient-to-r from-#217BFE via-#ac87eb to-#ee4d5d bg-clip-text hover:text-transparent text-size-sm bg-#FFFFFF7A font-400 transition-property-all transition-delay-50 transition-duration-1000"
+      class=" text-#217BFE  hover:text-#ac87eb text-size-sm font-400 property-all delay-50 duration-1000"
     >favorodera &copy; {{ new Date().getFullYear() }}</NuxtLink>
 
     <div class="flex gap-1 items-center justify-center">

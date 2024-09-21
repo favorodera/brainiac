@@ -1,9 +1,11 @@
 <template>
-  <div class="p-0 gap-8 w-full flex flex-col justify-center items-center">
-    <HomeHero />
+  <main class="w-full flex justify-center items-center">
+    <NuxtLayout name="guest">
+      <HomeHero />
 
-    <HomeAbout />
-  </div>
+      <HomeAbout />
+    </NuxtLayout>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -12,6 +14,6 @@ useHead({
 })
 
 definePageMeta({
-  layout: 'guest',
+  layout: false,
 })
 </script>

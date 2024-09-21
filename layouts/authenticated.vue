@@ -1,6 +1,6 @@
 <template>
-  <main
-    class="w-full p-5 flex flex-col min-h-screen gap-10 justify-between items-center"
+  <div
+    class="w-full max-w-90rem flex flex-col min-h-full gap-10 justify-between items-center"
   >
     <CustomNav>
       <template #menu-button>
@@ -30,7 +30,7 @@
       <ChatTextArea />
       <CustomFooter />
     </div>
-  </main>
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -1,17 +1,26 @@
-body {
-  background: black;
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 1rem;
 }
 
-#__nuxt {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+  cursor: grab;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
 }
 
 pre {
+  max-width: 100%;
   overflow-x: auto;
-  white-space: pre-wrap;
-  word-break: break-word;
   padding: 1rem;
   border-radius: 1rem;
 }
@@ -44,7 +53,19 @@ table {
 
 td,
 th {
-  border: 1px solid #dddddd;
+  border: 0.006rem solid #dddddd;
   text-align: left;
-  padding: 8px;
+  padding: 0.5rem;
+}
+
+a {
+  color: #0fbcf9;
+
+  &.active {
+    color: #0fbaf9a9;
+  }
+
+  &:hover {
+    color: #0fbaf9a9;
+  }
 }

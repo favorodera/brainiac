@@ -1,9 +1,11 @@
 <template>
-  <div class="w-full flex flex-col gap-8 items-center justify-between p-0">
-    <ChatIntro />
+  <main class="w-full flex items-center justify-center">
+    <NuxtLayout name="authenticated">
+      <ChatIntro />
 
-    <ChatPromptCards />
-  </div>
+      <ChatPromptCards />
+    </NuxtLayout>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -12,7 +14,7 @@ useHead({
 })
 
 definePageMeta({
-  layout: 'authenticated',
+  layout: false,
   middleware: ['auth'],
 })
 </script>

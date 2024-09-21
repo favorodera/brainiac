@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-const { data: claims } = await useFetch('/api/claims', {
+const { data: claims } = await useLazyFetch('/api/claims', {
   method: 'GET',
 })
 </script>

@@ -24,4 +24,4 @@ logs
 !.env.example
 
 # Firebase Secrets
-service.json
+firebase/service.json

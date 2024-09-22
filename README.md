@@ -19,7 +19,7 @@ Brainiac is an AI chat app powered by Google's Gemini AI. It is designed to help
 
 - [Nuxt 3](https://nuxt.com/) - The frontend
 - [Firebase](https://firebase.google.com/) - Backend
-- [Gemini AI]([https://gemini.ai/](https://ai.google.dev/gemini-api/docs/models/gemini) - AI Model
+- [Gemini AI](https://ai.google.dev/gemini-api/docs/models/gemini) - AI Model
 - [Shiki](https://shiki.style/) - Syntax Highlighting
 - [Markdown It](https://github.com/markdown-it/markdown-it) - Markdown Parser
 - [UnoCss](https://unocss.dev/) - CSS Framework

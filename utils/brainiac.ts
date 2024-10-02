@@ -1,5 +1,8 @@
+import useBrainiacStore from "~/store/brainiacStore";
+
+const brainiacStore = useBrainiacStore();
+
 export default async function (prompt: string) {
-  const textarea = document.querySelector("textarea");
   const chatBubbles = document.querySelector(".chat-bubbles");
   const brainiac = await useBrainiac();
   const isNewChat = useIsNewChat();
@@ -8,17 +11,17 @@ export default async function (prompt: string) {
 
   if (!prompt) return;
 
-  if (textarea) {
-    temporaryPromptHolder = textarea.value;
-    textarea.value = "";
-  }
+  temporaryPromptHolder = brainiacStore.prompt;
+  brainiacStore.prompt = "";
 
   isNewChat.value =
     useRoute().path === "/chat" || useRoute().path === "/chat/" ? true : false;
 
   if (isNewChat.value) {
-    const redirect = await $fetch("/api/generatechatid", { method: "GET" });
-    await navigateTo(`/chat/${redirect}`);
+    await $fetch("/api/generatechatid", { method: "GET" })
+      .then((chatId) => {
+        navigateTo(`/chat/${chatId}`, { replace: true });
+      })
   }
 
   try {
@@ -71,18 +74,12 @@ export default async function (prompt: string) {
         ],
       }),
     });
-
-    isNewChat.value = false;
-
-    return;
   } catch (error) {
     isBrainiacRunning.value = false;
-
-    if (isNewChat) navigateTo("/chat");
-
     brainiac.value.pop();
+    if (isNewChat) await navigateTo("/chat");
 
-    if (textarea) textarea.value = temporaryPromptHolder;
+    brainiacStore.prompt = temporaryPromptHolder;
 
     return error;
   }

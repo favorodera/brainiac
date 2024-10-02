@@ -58,6 +58,4 @@
 import useBrainiacStore from '~/store/brainiacStore'
 
 const isBrainiacRunning = await useIsBrainiacRunning()
-
-onMounted(() => useBrainiacStore().prompt = '')
 </script>

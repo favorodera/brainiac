@@ -17,10 +17,16 @@ importers:
       '@iconify-json/fa':
         specifier: ^1.2.0
         version: 1.2.0
+      '@iconify-json/fluent':
+        specifier: ^1.2.2
+        version: 1.2.2
       '@iconify-json/heroicons':
         specifier: ^1.2.0
         version: 1.2.0
       '@iconify-json/heroicons-solid':
+        specifier: ^1.2.0
+        version: 1.2.0
+      '@iconify-json/hugeicons':
         specifier: ^1.2.0
         version: 1.2.0
       '@iconify-json/ion':
@@ -49,7 +55,7 @@ importers:
         version: 14.1.2
       '@unocss/nuxt':
         specifier: ^0.62.4
-        version: 0.62.4(magicast@0.3.5)(postcss@8.4.42)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.1)(sass-embedded@1.79.3)(terser@5.31.6))(webpack-sources@3.2.3)(webpack@5.94.0(esbuild@0.21.5))
+        version: 0.62.4(magicast@0.3.5)(postcss@8.4.42)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.1)(sass-embedded@1.79.3)(terser@5.31.6))(webpack-sources@3.2.3)(webpack@5.94.0(esbuild@0.23.1))
       firebase:
         specifier: ^10.13.1
         version: 10.13.1
@@ -70,7 +76,7 @@ importers:
         version: 1.79.3
       unocss:
         specifier: ^0.62.4
-        version: 0.62.4(@unocss/webpack@0.62.4(rollup@4.21.2)(webpack@5.94.0(esbuild@0.21.5)))(postcss@8.4.42)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.1)(sass-embedded@1.79.3)(terser@5.31.6))
+        version: 0.62.4(@unocss/webpack@0.62.4(rollup@4.21.2)(webpack@5.94.0(esbuild@0.23.1)))(postcss@8.4.42)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.1)(sass-embedded@1.79.3)(terser@5.31.6))
       vue:
         specifier: latest
         version: 3.4.38(typescript@5.5.4)
@@ -1003,11 +1009,17 @@ packages:
   '@iconify-json/fa@1.2.0':
     resolution: {integrity: sha512-D49fT0bDtnoJIEE2586VDL6Yuti6BBYWA90GIeZabJ6KZ8WXylw+EhQfz6weMDr0HrRDFV/mzwS8gpWADBprMA==}
 
+  '@iconify-json/fluent@1.2.2':
+    resolution: {integrity: sha512-eYPjqGfTDno2VOyRWiEQkiNXb2RtjYsxfnzyEWWZYE9w35Svph4bPsZG3IXf7+D3r1mk9bYreX+h7Ywyy0L5RQ==}
+
   '@iconify-json/heroicons-solid@1.2.0':
     resolution: {integrity: sha512-o+PjtMXPr4wk0veDS7Eh6H1BnTJT1vD7HcKl+I7ixdYQC8i1P2zdtk0C2v7C9OjJBMsiwJSCxT4qQ3OzONgyjw==}
 
   '@iconify-json/heroicons@1.2.0':
     resolution: {integrity: sha512-EmvGN0L9EUJCmQ82rkLGZ4tkz0YGQfZV7ugKT6UvHni/bxNitQrD0gLj6NJj2W9zsSoXyNHyCX236+EJmO4pmA==}
+
+  '@iconify-json/hugeicons@1.2.0':
+    resolution: {integrity: sha512-jlvqjvzAECReUzdJ/m5ziW2fOooK/n0Sy8Fryu56KqeFJMgCDgZKvLHZVpt0D0PkyAkEj+pbqtwG0RFcPX/bnw==}
 
   '@iconify-json/ion@1.2.0':
     resolution: {integrity: sha512-uyFGINF59wOZDgXNkUTXTnzL2qeTfwbjP45JidRwhFK2JvFH9wyhXHz+TXqrG80PbQsNCqhIgGfwHmASWbutsg==}
@@ -6458,11 +6470,19 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
+  '@iconify-json/fluent@1.2.2':
+    dependencies:
+      '@iconify/types': 2.0.0
+
   '@iconify-json/heroicons-solid@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 
   '@iconify-json/heroicons@1.2.0':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/hugeicons@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -7639,7 +7659,7 @@ snapshots:
       gzip-size: 6.0.0
       sirv: 2.0.4
 
-  '@unocss/nuxt@0.62.4(magicast@0.3.5)(postcss@8.4.42)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.1)(sass-embedded@1.79.3)(terser@5.31.6))(webpack-sources@3.2.3)(webpack@5.94.0(esbuild@0.21.5))':
+  '@unocss/nuxt@0.62.4(magicast@0.3.5)(postcss@8.4.42)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.1)(sass-embedded@1.79.3)(terser@5.31.6))(webpack-sources@3.2.3)(webpack@5.94.0(esbuild@0.23.1))':
     dependencies:
       '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.21.2)(webpack-sources@3.2.3)
       '@unocss/config': 0.62.4
@@ -7653,8 +7673,8 @@ snapshots:
       '@unocss/preset-wind': 0.62.4
       '@unocss/reset': 0.62.4
       '@unocss/vite': 0.62.4(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.1)(sass-embedded@1.79.3)(terser@5.31.6))
-      '@unocss/webpack': 0.62.4(rollup@4.21.2)(webpack@5.94.0(esbuild@0.21.5))
-      unocss: 0.62.4(@unocss/webpack@0.62.4(rollup@4.21.2)(webpack@5.94.0(esbuild@0.21.5)))(postcss@8.4.42)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.1)(sass-embedded@1.79.3)(terser@5.31.6))
+      '@unocss/webpack': 0.62.4(rollup@4.21.2)(webpack@5.94.0(esbuild@0.23.1))
+      unocss: 0.62.4(@unocss/webpack@0.62.4(rollup@4.21.2)(webpack@5.94.0(esbuild@0.23.1)))(postcss@8.4.42)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.1)(sass-embedded@1.79.3)(terser@5.31.6))
     transitivePeerDependencies:
       - magicast
       - postcss
@@ -7760,7 +7780,7 @@ snapshots:
       - rollup
       - supports-color
 
-  '@unocss/webpack@0.62.4(rollup@4.21.2)(webpack@5.94.0(esbuild@0.21.5))':
+  '@unocss/webpack@0.62.4(rollup@4.21.2)(webpack@5.94.0(esbuild@0.23.1))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@rollup/pluginutils': 5.1.0(rollup@4.21.2)
@@ -7770,7 +7790,7 @@ snapshots:
       magic-string: 0.30.11
       tinyglobby: 0.2.6
       unplugin: 1.14.1(webpack-sources@3.2.3)
-      webpack: 5.94.0(esbuild@0.21.5)
+      webpack: 5.94.0(esbuild@0.23.1)
       webpack-sources: 3.2.3
     transitivePeerDependencies:
       - rollup
@@ -11400,16 +11420,16 @@ snapshots:
       - supports-color
     optional: true
 
-  terser-webpack-plugin@5.3.10(esbuild@0.21.5)(webpack@5.94.0(esbuild@0.21.5)):
+  terser-webpack-plugin@5.3.10(esbuild@0.23.1)(webpack@5.94.0(esbuild@0.23.1)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.31.6
-      webpack: 5.94.0(esbuild@0.21.5)
+      webpack: 5.94.0(esbuild@0.23.1)
     optionalDependencies:
-      esbuild: 0.21.5
+      esbuild: 0.23.1
 
   terser@5.31.6:
     dependencies:
@@ -11610,7 +11630,7 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unocss@0.62.4(@unocss/webpack@0.62.4(rollup@4.21.2)(webpack@5.94.0(esbuild@0.21.5)))(postcss@8.4.42)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.1)(sass-embedded@1.79.3)(terser@5.31.6)):
+  unocss@0.62.4(@unocss/webpack@0.62.4(rollup@4.21.2)(webpack@5.94.0(esbuild@0.23.1)))(postcss@8.4.42)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.1)(sass-embedded@1.79.3)(terser@5.31.6)):
     dependencies:
       '@unocss/astro': 0.62.4(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.1)(sass-embedded@1.79.3)(terser@5.31.6))
       '@unocss/cli': 0.62.4(rollup@4.21.2)
@@ -11630,7 +11650,7 @@ snapshots:
       '@unocss/transformer-variant-group': 0.62.4
       '@unocss/vite': 0.62.4(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.1)(sass-embedded@1.79.3)(terser@5.31.6))
     optionalDependencies:
-      '@unocss/webpack': 0.62.4(rollup@4.21.2)(webpack@5.94.0(esbuild@0.21.5))
+      '@unocss/webpack': 0.62.4(rollup@4.21.2)(webpack@5.94.0(esbuild@0.23.1))
       vite: 5.4.2(@types/node@22.5.1)(sass-embedded@1.79.3)(terser@5.31.6)
     transitivePeerDependencies:
       - postcss
@@ -11919,7 +11939,7 @@ snapshots:
 
   webpack-virtual-modules@0.6.2: {}
 
-  webpack@5.94.0(esbuild@0.21.5):
+  webpack@5.94.0(esbuild@0.23.1):
     dependencies:
       '@types/estree': 1.0.5
       '@webassemblyjs/ast': 1.12.1
@@ -11941,7 +11961,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(esbuild@0.21.5)(webpack@5.94.0(esbuild@0.21.5))
+      terser-webpack-plugin: 5.3.10(esbuild@0.23.1)(webpack@5.94.0(esbuild@0.23.1))
       watchpack: 2.4.2
       webpack-sources: 3.2.3
     transitivePeerDependencies:

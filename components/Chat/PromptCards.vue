@@ -37,9 +37,9 @@ import useGeminiStore from "~/store/brainiacStore";
 
 const colors = ref(["#ac87eb", "#a24ae7", "#f66a4b", "#4859f3"]);
 
-const randomizedPromptCards= await $fetch("/api/promptcards", { method: "GET" });
+const {data:randomizedPromptCards}= await useFetch("/api/promptcards", { method: "GET" });
 
-const items = randomizedPromptCards || [];
+const items = randomizedPromptCards.value || [];
 
 const promptCardToTextarea = (promptcard: string) => {
   useGeminiStore().prompt = promptcard;
